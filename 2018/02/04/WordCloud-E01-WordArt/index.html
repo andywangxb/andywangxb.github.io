@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next gemini use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -53,22 +53,22 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/my-apple-touch-icon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my-favicon-32x32.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my-favicon-16x16.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/my-logo.svg?v=5.1.4" color="#222">
 
 
 
 
 
-  <meta name="keywords" content="Andy, WANG" />
+  <meta name="keywords" content="visualization,wordcloud," />
 
 
 
@@ -80,6 +80,7 @@
 
 
 <meta name="description" content="1. 制作原料：主料：文本（QQ聊天记录）辅料：WordArt，jieba（python包）  jieba 是进行中文分词的一个十分实用的软件包。项目在Github的地址为：https://github.com/fxsjy/jieba。我们知道，一个文本的含义需要词语串联得到，利用jieba我们可以将中文字符串进行有效的分割，得到组成文本的各个词语。然后基于词语制作我们的词云图。  安装并使用 j">
+<meta name="keywords" content="visualization,wordcloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WordCloud-E01-WordArt">
 <meta property="og:url" content="http://yoursite.com/2018/02/04/WordCloud-E01-WordArt/index.html">
@@ -95,7 +96,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10426271-97810993463fcf5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10426271-88e53a2a9a551178.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10426271-57aaf4360ced0493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-05T06:24:02.838Z">
+<meta property="og:updated_time" content="2018-02-05T12:41:50.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WordCloud-E01-WordArt">
 <meta name="twitter:description" content="1. 制作原料：主料：文本（QQ聊天记录）辅料：WordArt，jieba（python包）  jieba 是进行中文分词的一个十分实用的软件包。项目在Github的地址为：https://github.com/fxsjy/jieba。我们知道，一个文本的含义需要词语串联得到，利用jieba我们可以将中文字符串进行有效的分割，得到组成文本的各个词语。然后基于词语制作我们的词云图。  安装并使用 j">
@@ -107,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -220,6 +221,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-about">
           <a href="/about/xingbo_wang_cv.pdf" rel="section">
             
@@ -314,7 +335,18 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/visualization/" itemprop="url" rel="index">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/visualization/" itemprop="url" rel="index">
                     <span itemprop="name">visualization</span>
                   </a>
                 </span>
@@ -332,6 +364,25 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  545
+                </span>
+              
+
+              
+
+              
+            </div>
           
 
           
@@ -404,7 +455,7 @@
   <p><span>Title:</span><a href="/2018/02/04/WordCloud-E01-WordArt/">WordCloud-E01-WordArt</a></p>
   <p><span>Author:</span><a href="/" title="visited Xingbo WANG personal blog">Xingbo WANG</a></p>
   <p><span>Datetime:</span>2018-02-05 - 14:02</p>
-  <p><span>Latestupdate:</span>2018-02-04 - 22:02</p>
+  <p><span>Latestupdate:</span>2018-02-05 - 04:02</p>
   <p><span>Originallink:</span><a href="/2018/02/04/WordCloud-E01-WordArt/" title="WordCloud-E01-WordArt">http://yoursite.com/2018/02/04/WordCloud-E01-WordArt/</a>
     <span class="copy-path"  title="click to cop the link!"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/02/04/WordCloud-E01-WordArt/"  aria-label="completed！"></i></span>
   </p>
@@ -440,14 +491,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.png" alt="Xingbo WANG WeChat Pay"/>
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Xingbo WANG WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.png" alt="Xingbo WANG Alipay"/>
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Xingbo WANG Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -463,6 +514,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/visualization/" rel="tag"><i class="fa fa-tag"></i> visualization</a>
+          
+            <a href="/tags/wordcloud/" rel="tag"><i class="fa fa-tag"></i> wordcloud</a>
+          
+        </div>
       
 
       
@@ -572,10 +631,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">3</span>
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -583,10 +642,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -598,6 +657,12 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/wangxb-andy" target="_blank" title="linkedin">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i>linkedin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
                     <a href="https://github.com/andywangxb" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
@@ -607,12 +672,6 @@
                     <a href="mailto:wangxbzb@hotmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://www.linkedin.com/in/wangxb-andy" target="_blank" title="linkedin">
-                      
-                        <i class="fa fa-fw fa-linkedin"></i>linkedin</a>
                   </span>
                 
             </div>
@@ -708,7 +767,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -810,6 +869,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -857,6 +923,19 @@
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
 
 
 
