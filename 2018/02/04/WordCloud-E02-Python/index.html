@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="Nothing is given, Everything is earned.I love my life!">
+<meta name="description" content="在前两章，介绍了文本材料的准备 以及 WordArt 可视化。这里我介绍如何自己动手DIY属于自己的词云。  材料： 文本数据 python （jieba，wordcloud）安装  jieba 和 wordcloud ：12pip install jiebapip install wordcloud   wordcloud 用于生成词云，Github地址： https://github.com/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grinding">
-<meta property="og:url" content="http://yoursite.com/2018/02/03/grinding/index.html">
+<meta property="og:title" content="WordCloud-E02-Python">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/WordCloud-E02-Python/index.html">
 <meta property="og:site_name" content="THIS IS LIFE!">
-<meta property="og:description" content="Nothing is given, Everything is earned.I love my life!">
+<meta property="og:description" content="在前两章，介绍了文本材料的准备 以及 WordArt 可视化。这里我介绍如何自己动手DIY属于自己的词云。  材料： 文本数据 python （jieba，wordcloud）安装  jieba 和 wordcloud ：12pip install jiebapip install wordcloud   wordcloud 用于生成词云，Github地址： https://github.com/">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-05T04:35:29.518Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10426271-a5657d38694db6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-02-05T06:31:40.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="grinding">
-<meta name="twitter:description" content="Nothing is given, Everything is earned.I love my life!">
+<meta name="twitter:title" content="WordCloud-E02-Python">
+<meta name="twitter:description" content="在前两章，介绍了文本材料的准备 以及 WordArt 可视化。这里我介绍如何自己动手DIY属于自己的词云。  材料： 文本数据 python （jieba，wordcloud）安装  jieba 和 wordcloud ：12pip install jiebapip install wordcloud   wordcloud 用于生成词云，Github地址： https://github.com/">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/10426271-a5657d38694db6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/03/grinding/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/04/WordCloud-E02-Python/"/>
 
 
 
 
 
-  <title>grinding | THIS IS LIFE!</title>
+  <title>WordCloud-E02-Python | THIS IS LIFE!</title>
   
 
 
@@ -242,7 +244,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/grinding/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/04/WordCloud-E02-Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -259,7 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">grinding</h1>
+          <h1 class="post-title" itemprop="name headline">WordCloud-E02-Python</h1>
         
 
         <div class="post-meta">
@@ -271,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-03T08:00:00-08:00">
-                2018-02-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T22:40:00-08:00">
+                2018-02-05
               </time>
             
 
@@ -294,8 +296,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
+                  <a href="/categories/visualization/" itemprop="url" rel="index">
+                    <span itemprop="name">visualization</span>
                   </a>
                 </span>
 
@@ -329,9 +331,33 @@
       
 
       
-        <blockquote>
-<p>Nothing is given, Everything is earned.<br>I love my life!</p>
-</blockquote>
+        <p>在前两章，介绍了<a href="https://www.jianshu.com/p/dee4ff08df2a" target="_blank" rel="noopener"><em>文本材料的准备</em> </a>以及 <a href="https://www.jianshu.com/p/9074ca68d51f" target="_blank" rel="noopener"><em>WordArt</em></a> 可视化。这里我介绍如何自己动手DIY属于自己的词云。</p>
+<ul>
+<li><h4 id="材料："><a href="#材料：" class="headerlink" title="材料："></a>材料：</h4><ul>
+<li>文本数据</li>
+<li>python （jieba，wordcloud）<br>安装  <strong>jieba</strong> 和 <strong>wordcloud</strong> ：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jieba</span><br><span class="line">pip install wordcloud</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>wordcloud</strong> 用于生成词云，Github地址： <a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">https://github.com/amueller/word_cloud</a><br><strong>wordcloud</strong>生成需要词语作为元素，由于wordcloud是国外的，对中文支持不好，所以我们需要提前对文本进行分词统计处理，得到关键词进行可视化。</p>
+</li>
+<li><h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h4><ul>
+<li><p>方式一：<br>  直接将分词结果放入<code>wordcloud.generate()</code>函数中进行处理（<code>wrd_dict</code>是分词的结果）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from wordcloud import WordCloud </span><br><span class="line">#可视化</span><br><span class="line">BKImg=np.array(Image.open(&quot;heart.jpg&quot;))# 加入自定义背景图片</span><br><span class="line">my_wordcloud = WordCloud(      </span><br><span class="line">      background_color=&apos;white&apos;,    # 设置背景颜色</span><br><span class="line">      mask = BKImg,        # 设置背景图片</span><br><span class="line">      max_words = rank_K,            # 设置最大现实的字数</span><br><span class="line">      #stopwords = &quot;小嫣嫣小星星&quot;,        # 设置停用词</span><br><span class="line">      font_path = &apos;FZLTHJW.TTF&apos;,# 设置字体格式，如不设置显示不了中文</span><br><span class="line">      max_font_size = 80,            # 设置字体最大值</span><br><span class="line">      min_font_size = 10,</span><br><span class="line">      # relative_scaling=0.5,</span><br><span class="line">      random_state = 30,            # 设置有多少种随机生成状态，即有多少种配色方案</span><br><span class="line">          scale=1</span><br><span class="line">          ).generate(wrd_dict)</span><br><span class="line">clr=ImageColorGenerator(BKImg) # 加入背景的配色方案</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=clr))`</span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show() #显示</span><br><span class="line">my_wordcloud.to_file(&quot;result1.png&quot;) # 将结果写入png</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二：</p>
+<ul>
+<li>方式一中，将分好的词加入自定义词典，加入<code>generate()</code>函数，但是这样得到的结果却不是很理想，最终 wordcloud 整理出来的结果将人名和一些人所说的话并在一起，导致“小王 哈哈哈”，“小王”都被分进词云的词典，导致“小王”这个词重复出现。</li>
+<li>为了解决这个问题，查看 <code>WordCloud</code> 这个类（对象），找到<code>generate_from_frequencies(wrd_dict)</code>这个函数，送入的是自定义的字典<code>{[对象]：[频率]}）</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 制作词典</span><br><span class="line">wrd_dict=&#123;&#125;</span><br><span class="line">for i in range(0,rank_K):</span><br><span class="line">     wrd_dict[str(tags[i][0])]=round(math.log(tags[i][1]*len_txt,1.5))</span><br><span class="line">#可视化</span><br><span class="line">BKImg=np.array(Image.open(&quot;heart.jpg&quot;))</span><br><span class="line">my_wordcloud = WordCloud(</span><br><span class="line">          background_color=&apos;white&apos;,    # 设置背景颜色</span><br><span class="line">          mask = BKImg,        # 设置背景图片</span><br><span class="line">          max_words = rank_K,            # 设置最大现实的字数</span><br><span class="line">          #stopwords = &quot;小嫣嫣小星星&quot;,        # 设置停用词</span><br><span class="line">          font_path = &apos;FZLTHJW.TTF&apos;,# 设置字体格式，如不设置显示不了中文</span><br><span class="line">          max_font_size = 80,            # 设置字体最大值</span><br><span class="line">          min_font_size = 10,</span><br><span class="line">          # relative_scaling=0.5,</span><br><span class="line">          random_state = 30,            # 设置有多少种随机生成状态，即有多少种配色方案</span><br><span class="line">              scale=1</span><br><span class="line">              ).generate_from_frequencies(wrd_dict)</span><br><span class="line">clr=ImageColorGenerator(BKImg)</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=clr))</span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show()</span><br><span class="line">my_wordcloud.to_file(&quot;result2.png&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>这里 <code>math.log()</code> 是调整聊天记录中出现频率过度频繁的人的名字的权重，使得样 本权重比较平衡。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="成果："><a href="#成果：" class="headerlink" title="成果："></a>成果：</h4><img src="http://upload-images.jianshu.io/upload_images/10426271-a5657d38694db6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="qq 聊天记录词云"><h4 id="大家赶紧动手制作自己的词云吧-趁着情人节前给自己的女朋友一个惊喜-▽"><a href="#大家赶紧动手制作自己的词云吧-趁着情人节前给自己的女朋友一个惊喜-▽" class="headerlink" title="大家赶紧动手制作自己的词云吧~ 趁着情人节前给自己的女朋友一个惊喜(*\^▽\^*)"></a>大家赶紧动手制作自己的词云吧~ 趁着情人节前给自己的女朋友一个惊喜(*\^▽\^*)</h4></li>
+</ul>
 
       
     </div>
@@ -352,6 +378,35 @@
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert modified path -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>Title:</span><a href="/2018/02/04/WordCloud-E02-Python/">WordCloud-E02-Python</a></p>
+  <p><span>Author:</span><a href="/" title="visited Xingbo WANG personal blog">Xingbo WANG</a></p>
+  <p><span>Datetime:</span>2018-02-05 - 14:02</p>
+  <p><span>Latestupdate:</span>2018-02-04 - 22:02</p>
+  <p><span>Originallink:</span><a href="/2018/02/04/WordCloud-E02-Python/" title="WordCloud-E02-Python">http://yoursite.com/2018/02/04/WordCloud-E02-Python/</a>
+    <span class="copy-path"  title="click to cop the link!"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/02/04/WordCloud-E02-Python/"  aria-label="completed！"></i></span>
+  </p>
+  <p><span>licence:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"></a> The copyright of this article belongs to the author. Please quote this as reference upon reproduction of this article.</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: 'completed',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
 
       
     </div>
@@ -401,15 +456,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/02/04/WordCloud-E01-WordArt/" rel="next" title="WordCloud-E01-WordArt">
+                <i class="fa fa-chevron-left"></i> WordCloud-E01-WordArt
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/04/say I love you/" rel="prev" title="Say I love you">
-                Say I love you <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +512,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -562,6 +626,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#材料："><span class="nav-number">1.</span> <span class="nav-text">材料：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现："><span class="nav-number">2.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成果："><span class="nav-number">3.</span> <span class="nav-text">成果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大家赶紧动手制作自己的词云吧-趁着情人节前给自己的女朋友一个惊喜-▽"><span class="nav-number">4.</span> <span class="nav-text">大家赶紧动手制作自己的词云吧~ 趁着情人节前给自己的女朋友一个惊喜(*\^▽\^*)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
