@@ -441,6 +441,234 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/Github-Pages-Blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xingbo WANG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THIS IS LIFE!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/05/Github-Pages-Blog/" itemprop="url">Github-Blog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T22:04:13+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/website/" itemprop="url" rel="index">
+                    <span itemprop="name">website</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  225
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Use-Github-to-create-your-own-blog"><a href="#Use-Github-to-create-your-own-blog" class="headerlink" title="Use Github to create your own blog"></a>Use Github to create your own blog</h3><h4 id="Register-for-Github-io"><a href="#Register-for-Github-io" class="headerlink" title="Register for Github.io"></a>Register for Github.io</h4><ol>
+<li>register for Github account</li>
+<li>create a new repository:<br><code>username.github.io</code></li>
+</ol>
+<h4 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h4><p><em>Env</em>: Ubuntu 16.04</p>
+<ol>
+<li>Dependencies:<ul>
+<li>Git</li>
+<li>NodeJs</li>
+<li>Hexo</li>
+</ul>
+</li>
+<li><p>Methods:</p>
+<ul>
+<li>Git: <code>sudo pt-get install git</code></li>
+<li><p>NodeJs: <a href="https://www.howtoing.com/install-latest-nodejs-npm-on-ubuntu" target="_blank" rel="noopener">NodeJs+NPM</a> </p>
+<ul>
+<li>if you wan to upgrade your nodejs, you could install a module named “n”<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g -n</span><br><span class="line">sudo n stable</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Hexo: <code>sudo npm install hexo-cli -g</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="Write-amp-Publish"><a href="#Write-amp-Publish" class="headerlink" title="Write &amp;Publish"></a>Write &amp;Publish</h4><ol>
+<li>initialization<br> <code>hexo init username.github.io</code></li>
+<li><p>configuration</p>
+<ul>
+<li>install the theme<br><code>cd username.github.io</code><br>use default and popular theme: <strong>next</strong><br><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code><br>for more themes, you can check the links: <a href="https://hexo.io/themes/" target="_blank" rel="noopener">HEXO THEMEs</a> </li>
+<li>basic configuration<br>edit username.github.io/<code>_config.yml</code><br>Hexo Basic Confs:  <a href="https://hexo.io/docs/configuration.html" target="_blank" rel="noopener">More Confs</a><br><strong>Notice:</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: [blog name]</span><br><span class="line">author: [your name]</span><br><span class="line">language: [zh-Hans、en]</span><br><span class="line">theme: __next__</span><br><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:username/username.github.io</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>wirte<br><code>hexo new [layout] &quot;essay name&quot;</code><br><img src="/images/scaffolds.PNG" alt="hexo post scaffolds"></p>
+</li>
+<li>test<br><code>hexo s</code></li>
+<li>deploy<ul>
+<li>install <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a> hexo-deployer-git tool:<br><code>npm install hexo-deployer-git --save</code></li>
+</ul>
+</li>
+<li>publish<ul>
+<li><code>hexo clean</code></li>
+<li><code>hexo g</code></li>
+<li><code>exo d</code></li>
+</ul>
+</li>
+<li>browse</li>
+</ol>
+<h4 id="useful-links-to-learn-to-build-your-blog"><a href="#useful-links-to-learn-to-build-your-blog" class="headerlink" title="useful links to learn to build your blog"></a>useful links to learn to build your blog</h4><p>Hexo: <a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a><br>NexT: <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br>Individual Settings: <a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">1</a>, <a href="http://blog.csdn.net/qq_33699981/article/details/72716951" target="_blank" rel="noopener">2</a></p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/04/WordCloud-E02-Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1277,7 +1505,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1288,7 +1516,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1299,7 +1527,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1394,7 +1622,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---2.5k words in total.---   </span>
+  <span class="post-count">---2.7k words in total.---   </span>
 </div>
 </br>
 
