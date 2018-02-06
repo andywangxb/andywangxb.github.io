@@ -571,7 +571,7 @@
 <li>python （jieba，wordcloud）<br>安装  <strong>jieba</strong> 和 <strong>wordcloud</strong> ：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jieba</span><br><span class="line">pip install wordcloud</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><strong>wordcloud</strong> 用于生成词云，Github地址： <a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">https://github.com/amueller/word_cloud</a><br><strong>wordcloud</strong>生成需要词语作为元素，由于wordcloud是国外的，对中文支持不好，所以我们需要提前对文本进行分词统计处理，得到关键词进行可视化。</p>
+<p><strong>wordcloud</strong>用于生成词云，Github地址：<a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">https://github.com/amueller/word_cloud</a><br><strong>wordcloud</strong>生成需要词语作为元素，由于wordcloud是国外的，对中文支持不好，所以我们需要提前对文本进行分词统计处理，得到关键词进行可视化。</p>
 </li>
 <li><h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h4><ul>
 <li><p>方式一：<br>  直接将分词结果放入<code>wordcloud.generate()</code>函数中进行处理（<code>wrd_dict</code>是分词的结果）</p>
@@ -580,7 +580,7 @@
 <li><p>方式二：</p>
 <ul>
 <li>方式一中，将分好的词加入自定义词典，加入<code>generate()</code>函数，但是这样得到的结果却不是很理想，最终 wordcloud 整理出来的结果将人名和一些人所说的话并在一起，导致“小王 哈哈哈”，“小王”都被分进词云的词典，导致“小王”这个词重复出现。</li>
-<li>为了解决这个问题，查看 <code>WordCloud</code> 这个类（对象），找到<code>generate_from_frequencies(wrd_dict)</code>这个函数，送入的是自定义的字典<code>{[对象]：[频率]}）</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 制作词典</span><br><span class="line">wrd_dict=&#123;&#125;</span><br><span class="line">for i in range(0,rank_K):</span><br><span class="line">     wrd_dict[str(tags[i][0])]=round(math.log(tags[i][1]*len_txt,1.5))</span><br><span class="line">#可视化</span><br><span class="line">BKImg=np.array(Image.open(&quot;heart.jpg&quot;))</span><br><span class="line">my_wordcloud = WordCloud(</span><br><span class="line">          background_color=&apos;white&apos;,    # 设置背景颜色</span><br><span class="line">          mask = BKImg,        # 设置背景图片</span><br><span class="line">          max_words = rank_K,            # 设置最大现实的字数</span><br><span class="line">          #stopwords = &quot;小嫣嫣小星星&quot;,        # 设置停用词</span><br><span class="line">          font_path = &apos;FZLTHJW.TTF&apos;,# 设置字体格式，如不设置显示不了中文</span><br><span class="line">          max_font_size = 80,            # 设置字体最大值</span><br><span class="line">          min_font_size = 10,</span><br><span class="line">          # relative_scaling=0.5,</span><br><span class="line">          random_state = 30,            # 设置有多少种随机生成状态，即有多少种配色方案</span><br><span class="line">              scale=1</span><br><span class="line">              ).generate_from_frequencies(wrd_dict)</span><br><span class="line">clr=ImageColorGenerator(BKImg)</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=clr))</span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show()</span><br><span class="line">my_wordcloud.to_file(&quot;result2.png&quot;)</span><br></pre></td></tr></table></figure>
+<li>为了解决这个问题，查看<code>WordCloud</code>这个类（对象），找到<code>generate_from_frequencies(wrd_dict)</code>这个函数，送入的是自定义的字典<code>{[对象]：[频率]}</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 制作词典</span><br><span class="line">wrd_dict=&#123;&#125;</span><br><span class="line">for i in range(0,rank_K):</span><br><span class="line">     wrd_dict[str(tags[i][0])]=round(math.log(tags[i][1]*len_txt,1.5))</span><br><span class="line">#可视化</span><br><span class="line">BKImg=np.array(Image.open(&quot;heart.jpg&quot;))</span><br><span class="line">my_wordcloud = WordCloud(</span><br><span class="line">          background_color=&apos;white&apos;,    # 设置背景颜色</span><br><span class="line">          mask = BKImg,        # 设置背景图片</span><br><span class="line">          max_words = rank_K,            # 设置最大现实的字数</span><br><span class="line">          #stopwords = &quot;小嫣嫣小星星&quot;,        # 设置停用词</span><br><span class="line">          font_path = &apos;FZLTHJW.TTF&apos;,# 设置字体格式，如不设置显示不了中文</span><br><span class="line">          max_font_size = 80,            # 设置字体最大值</span><br><span class="line">          min_font_size = 10,</span><br><span class="line">          # relative_scaling=0.5,</span><br><span class="line">          random_state = 30,            # 设置有多少种随机生成状态，即有多少种配色方案</span><br><span class="line">              scale=1</span><br><span class="line">              ).generate_from_frequencies(wrd_dict)</span><br><span class="line">clr=ImageColorGenerator(BKImg)</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=clr))</span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show()</span><br><span class="line">my_wordcloud.to_file(&quot;result2.png&quot;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -770,7 +770,7 @@
           
             <h4 id="1-制作原料："><a href="#1-制作原料：" class="headerlink" title="1. 制作原料："></a>1. 制作原料：</h4><p>主料：文本（QQ聊天记录）<br>辅料：WordArt，jieba（python包）</p>
 <ul>
-<li><strong>jieba</strong> 是进行中文分词的一个十分实用的软件包。项目在Github的地址为：<a href="https://github.com/fxsjy/jieba。我们知道，一个文本的含义需要词语串联得到，利用jieba我们可以将中文字符串进行有效的分割，得到组成文本的各个词语。然后基于词语制作我们的词云图。" target="_blank" rel="noopener">https://github.com/fxsjy/jieba。我们知道，一个文本的含义需要词语串联得到，利用jieba我们可以将中文字符串进行有效的分割，得到组成文本的各个词语。然后基于词语制作我们的词云图。</a></li>
+<li><strong>jieba</strong>是进行中文分词的一个十分实用的软件包。项目在Github的地址为：<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">https://github.com/fxsjy/jieba</a>  。我们知道，一个文本的含义需要词语串联得到，利用jieba我们可以将中文字符串进行有效的分割，得到组成文本的各个词语。然后基于词语制作我们的词云图。</li>
 </ul>
 <p>安装并使用 jieba 流程，具体参考前一篇博客<br>【传送门】：<a href="http://www.jianshu.com/p/dee4ff08df2a" target="_blank" rel="noopener">http://www.jianshu.com/p/dee4ff08df2a</a></p>
 <ul>
@@ -1543,11 +1543,29 @@
 
 
 
-
+<!--
 
   
 
 
+-->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzkyNS8xMDQ2MQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
 
 
 
