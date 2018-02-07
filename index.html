@@ -439,6 +439,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/anaconda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xingbo WANG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THIS IS LIFE!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/06/anaconda/" itemprop="url">anaconda</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-07T03:37:24+08:00">
+                2018-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  340
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Use-Anaconda-to-manage-your-python-envs"><a href="#Use-Anaconda-to-manage-your-python-envs" class="headerlink" title="Use Anaconda to manage your python envs"></a>Use Anaconda to manage your python envs</h4><p><a href="https://www.anaconda.com/what-is-anaconda/" target="_blank" rel="noopener">Anaconda</a> is very convenient tool to manage multiple virtual envs of python in your PC.<br>So you can enjoy different version of python, avoid conflictions between different projects.<br>This blog I will introduce how to <em>install anaconda</em> &amp; install envs for <a href="http://www.tensorfly.cn/" target="_blank" rel="noopener"><strong>tensorflow(CPU)</strong></a>、<a href="https://docs.scrapy.org/en/latest/intro/install.html" target="_blank" rel="noopener"><strong>Scrapy</strong></a></p>
+<h4 id="Install-anaconda"><a href="#Install-anaconda" class="headerlink" title="Install anaconda"></a>Install anaconda</h4><ol>
+<li>Go to the official website to <a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">download latest Anaconda</a>.</li>
+<li>Install Anaconda with default configurations.<ul>
+<li>Of course you can change the location wherever you like to install it;</li>
+<li>Don’t recommend you to add Anaconda to the system PATH env var.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Manage-envs-with-Anaconda"><a href="#Manage-envs-with-Anaconda" class="headerlink" title="Manage envs with Anaconda"></a>Manage envs with Anaconda</h4><p>common commands:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># check current env</span><br><span class="line">conda info -e</span><br><span class="line"># create new env with specific version of python </span><br><span class="line">conda create -n env_name python=2.7</span><br><span class="line"># switch envs</span><br><span class="line">activate env_name</span><br><span class="line"># exit env</span><br><span class="line">deacticate env_name</span><br><span class="line"># remove env</span><br><span class="line">conda remove -n env_name --all</span><br></pre></td></tr></table></figure>
+<h4 id="Manage-packages-with-Anaconda"><a href="#Manage-packages-with-Anaconda" class="headerlink" title="Manage packages with Anaconda"></a>Manage packages with Anaconda</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># install new pkgs</span><br><span class="line">conda search pkg_name</span><br><span class="line">conda install pkg_name</span><br><span class="line"># check installed pkg list</span><br><span class="line">conda list</span><br><span class="line"># update pkgs</span><br><span class="line">conda update pkg_name</span><br><span class="line">conda update anaconda</span><br><span class="line"># remove pkgs</span><br><span class="line">conda removw pkg_name</span><br></pre></td></tr></table></figure>
+<h4 id="Use-domestic-mirrors"><a href="#Use-domestic-mirrors" class="headerlink" title="Use domestic mirrors"></a>Use domestic mirrors</h4><p>In order to install  and upgrade easily in China. We should specifically allocate domestic mirrors to it.</p>
+<ol>
+<li>find <code>.condarc</code>in C:\Users\user_name\.condarc</li>
+<li>remove <code>- default</code></li>
+<li>Open <em>Anaconda Prompt</em>,input:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line"></span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line"></span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line"></span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+<p>To ensure that pkgs you use does not interfere with each other. Better to create new envs for them.</p>
+<h4 id="Install-tenflow-CPU"><a href="#Install-tenflow-CPU" class="headerlink" title="Install tenflow(CPU)"></a>Install tenflow(CPU)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tensorflow python=3.5</span><br><span class="line">activate tensorflow</span><br><span class="line">conda install tensorflow</span><br></pre></td></tr></table></figure>
+<h4 id="Install-Scrapy"><a href="#Install-Scrapy" class="headerlink" title="Install Scrapy"></a>Install Scrapy</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n py27 python=2.7</span><br><span class="line">activate py27</span><br><span class="line">conda install -c conda-forge scrapy</span><br></pre></td></tr></table></figure>
+<p>Wait a moment &amp; have a cup of  tea~</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/Github-Blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1497,7 +1697,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1508,7 +1708,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1519,7 +1719,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1614,7 +1814,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---2.7k words in total.---   </span>
+  <span class="post-count">---3.0k words in total.---   </span>
 </div>
 </br>
 
