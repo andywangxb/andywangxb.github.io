@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="Xingbo WANG"
+content="andywangxb.github.io">
+<meta http-quiv="Content-Type" content="text/html"; charset=gb2312" />
+<!--
+<meta http-equiv="Refresh" content="5;url=https://andywangxb.github.io" /> 
+-->
+<!--  title of web  -->
+<title>html experiments</title>
+<!-- style of web -->
+<style type="text/css">
+h1 {color: green}
+p {color: black}
+span.red {color:red;}
+#header {
+	background-color:black;
+	color:white;
+	text-align:center;
+	padding:5px;
+}
+#nav{
+	line-height:30px;
+	background-color:#eeeeee;
+	height:300px;
+	width:100px;
+	float:left;
+	padding:5px;
+}
+#section{
+	width:350px;
+	float:left;
+	padding:10px;
+}
+#footer{
+	background-color:black;
+	color:white;
+	clear:both;
+	text-align:center;
+	padding:5px;
+}
+</style>
+<!-- outer style -->
+<link rel ="stylesheet" type="text/css" href="/html/csstest1.css">
+</head>
+<!-- visible part -->
+<body bgcolor="lightgrey">
+<!-- this is experiment -->
+<!-- heading-->
+<h1 align="center">h1 heading</h1>
+<h2 style="background-color:red">h2 heading</h2>
+<h3 style="text-align:right">h3 heading</h3>
+<h4>h4 heading</h4>
+<h5>h5 heading</h5>
+<h6>h6 heading</h6>
+<!-- paragraph -->
+<p>one paragraph</p>
+<p>another paragraph</p>
+<hr /><!-- split -->
+<!-- link -->
+<a href="https://andywangxb.github.io"> my personal homepage</a>
+<p>
+<a href ="/index.html">This </a >is directed to a link of this website.</p>
+<p>
+<a href ="http://www.qq.com">This </a>is directed to a link outside this website</p>
+<a href ="http://www.qq.com" target="_blank">This</a> will open a new page directed to <i>qq.com</i>
+<p> you can mail me at<a href ="mailto: wangxbzb@hotmail?subject=Hello%20again">subject: hello again</a>
+</p>
+<hr />
+<!-- insert image -->
+<map>
+<p>Image
+<img src="/images/photo.png" align="center" alt="photo.png" width="100" height="100"/>
+among the texts</p>
+</map>
+<hr />
+<!-- word style -->
+<b> this text is bold </b>
+<br />
+<strong> this text is strong </strong>
+<br />
+<big> this text is big</big>
+<br />
+<em> this text is emphasized</em>
+<br />
+<i> this text is italic</i>
+<br/>
+<small>this text is small</small>
+this text contains <sub>subscript</sub>
+<br />
+this text contains <sup>superscript</sup>
+<hr />
+<pre>
+	This is pre tag.
+	it can be used to demonstarte codes:
+	for i in range(0,10):
+		print(i)
+</pre>
+<code> Computer Code </code>
+<br />
+<kbd>keyboard input</kbd>
+<br />
+<tt>teletype text</tt>
+<br />
+<samp>sample text</samp>
+<br />
+<var>computer variable</var>
+<br />
+<hr />
+<address>
+written by <a href ="wangxbzb@hotmail.com">Xingbo WANG</a>.<br>
+Visit us at:<br>
+andywangxb.github.io<br>
+Wuhan, China<br>
+</address>
+<hr />
+<abbr title="etcetera">etc.</abbr>
+<br />
+<acronym title="world wide web">www</acronym>
+<hr />
+<bdo dir="rtl">
+here is some Hebrew text
+</bdo>
+<hr />
+<blockquote>
+this is for long quotes.this is for long quotes.this is for long quotes.
+</blockquote>
+<br />
+<q>this is for short quotes</q>
+<br />
+For example:
+<q> this is an example from WWF website</q>
+<blockquote cite="https://www.worldwildlife.org/who/index.html">
+五十年来，WWF 一直致力于保护自然界的未来。世界领先的环保组织，WWF 工作于 100 个国家，并得到美国一百二十万会员及全球近五百万会员的支持。
+</blockquote>
+<hr />
+<p> a "dozen" is not<del> twenty </del> <ins> twelve </ins>
+</p>
+<hr />
+<p><cite>The Scream</cite> by Edward Munch. Painted in 1893.</p>
+<hr />
+<!-- table -->
+<p><h4 align="center">table example</h4>
+<table border="1">
+<caption>name</caption>
+<tr>
+<th>heading A</th>
+<th>heading B</th>
+</tr>
+<tr>
+<td> row 1 , cell 1 </td>
+<td> row 1 , cell 2 </td>
+</tr>
+<tr>
+<td> row 2 , cell 1 </td>
+<td> row 2 , cell 2 </td>
+</tr>
+</table>
+</p>
+<hr />
+<p>unorganized list
+<ul>
+<li>coffe</li>
+<ul>
+<li>black coffe</li>
+<li>latte</li>
+</ul>
+<li>milk</li>
+</ul>
+</p>
+<p>organized list
+<ol>
+<li>coffe</li>
+<li>milk</li>
+</ol>
+</p>
+<p>DIY table
+<dl>
+<dt>computer</dt>
+<dd>device</dd>
+<dt>monitor</dt>
+<dd>device</dd>
+</dl>
+</p>
+<hr />
+<!-- span -->
+<p><h1>My <span class="red">Important</span> Heading</h1>
+</p>
+<hr />
+<!-- div style -->
+<div id="header">
+<h1>city gallery</h1>
+</div>
+<div id="nav">
+London<br>
+Paris<br>
+Tokyo<br>
+</div>
+<div id="section">
+<h1>London</h1>
+<p>London is the capital city of England.
+</p>
+</div>
+<div id="footer">
+CopyRight
+</div>
+<hr />
+<!-- frame -->
+<iframe <!--src="http://www.qq.com"--> name="tencent" width="100%" height="200" frameborder="0"></iframe>
+<p>
+<a href="http://www.baidu.com" target="tencent">baidu.com</a>
+</p>
+<hr />
+<!-- insert script-->
+<script type="text/javascript">
+document.write("hello world!")
+</script>
+<hr />
+<!-- special symbols -->
+<p>
+&nbsp space<q>&nbsp</q><br>
+5 &lt 10<br>
+5 &amp 10<br>
+&pound 5<br>
+&yen 10<br>
+&cent 10<br>
+&reg<br>
+&trade<br>
+5 &times 10<br>
+10 &divide 5<br>
+<br>
+</p>
+<hr />
+<!-- form -->
+<form>
+ First name:<br>
+<input type="text" name="firstname">
+<br>
+ Last name:<br>
+<input type="text" name="lastname">
+<br>
+<input type="radio" name="sex" value="male" checked>Male
+<br>
+<input type="radio" name="sex" value="female">Female
+<br>
+</form>
+<hr />
+</body>
+</html>
