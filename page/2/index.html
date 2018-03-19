@@ -272,6 +272,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/04/WordCloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xingbo WANG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THIS IS LIFE!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/04/WordCloud/" itemprop="url">WordCloud</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T14:00:00+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learning/visualization/" itemprop="url" rel="index">
+                    <span itemprop="name">visualization</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,097
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="1-词云图"><a href="#1-词云图" class="headerlink" title="1.   词云图"></a>1.   词云图</h3><p>相信大家在生活中也看过下面这样的图形吧？想必对于词云图也不是很陌生吧？<em>词云图</em>，顾名思义，就是一些具有关键意义的词，组成一些具有代表意义的形状，并按照重要程度、出现频率等进行排列组合得到一张精炼浓缩的信息图。是不是感觉十分高大上？其实，我们自己也可以做属于我们自己的词云图。<br><img src="http://upload-images.jianshu.io/upload_images/10426271-687bdfaec4d1e7af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="百度搜索词云图01"><br><img src="http://upload-images.jianshu.io/upload_images/10426271-1c525aafb6678367.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="百度搜索词云图02"></p>
+<h3 id="2-准备素材"><a href="#2-准备素材" class="headerlink" title="2.  准备素材"></a>2.  准备素材</h3><p>巧妇难为无米之炊，我们需要准备一下材料去烹饪我们这道视觉盛宴：</p>
+<ul>
+<li>主材料：<strong>文本</strong></li>
+<li>辅料：图片</li>
+<li>工具：词云制作工具（WordArt 等） OR 编程语言（python 等）</li>
+</ul>
+<h3 id="3-准备文本"><a href="#3-准备文本" class="headerlink" title="3. 准备文本"></a>3. 准备文本</h3><p>这一章里面，我主要介绍的是如何把QQ聊天记录导出，并把整理成关键词，为后续可视化做准备的。</p>
+<ul>
+<li><p>导出聊天记录<br>首先找到qq的<strong>消息管理器</strong>（小喇叭）,然后找到你想要得到的聊天记录的那位，右键，导出消息记录就可以了。【注意】选择下拉菜单，将聊天记录导出为(<em>* .txt</em>)格式或者是(<em>* .mht</em>)格式。<br><img src="http://upload-images.jianshu.io/upload_images/10426271-7baff7ca7c10a2ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="导出qq聊天记录.png"></p>
+</li>
+<li><p>处理文本<br>在得到文本素材以后，我们需要将这些文本进行分割，得到一个个词语，经过过滤得到关键词。这里，我们选用的是 <strong>jieba</strong> 结巴中文分词。<br>jieba 中文分词的 Github 项目地址：<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">https://github.com/fxsjy/jieba</a></p>
+<ul>
+<li>通过 <code>pip</code> 安装jieba：<code>pip install jieba</code></li>
+<li><p>通过 jieba 处理文本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">import jieba.analyse</span><br><span class="line">import re # 正则表达式清洗数据</span><br><span class="line"># 打开并读取文档</span><br><span class="line">file=open(&quot;wxb.txt&quot;,&apos;r&apos;,encoding=&apos;UTF-8&apos;)</span><br><span class="line">obj=file.read()</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>清洗聊天记录<br>这里主要利用re 模块进行清洗，大家可以根据自己的聊天记录形式进行自定义的处理。<br>re 模块介绍：<a href="http://www.runoob.com/python/python-reg-expressions.html" target="_blank" rel="noopener">http://www.runoob.com/python/python-reg-expressions.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"># 使用re.sub()函数进行清洗</span><br><span class="line"># 主要清洗对象为&quot;==&quot;、&quot;YYYY-MM-DD&quot;、&quot;HH:MM:SS&quot;、&quot;QQ昵称&quot;、&quot;[图片]&quot;</span><br><span class="line"># 下面以时间数据处理为例进行简单的演示，大家可以根据自己的需要，根据规则进行修改</span><br><span class="line">t_rm1= re.sub(&quot;\d\d:\d\d:\d\d&quot;,&apos;&apos;,obj)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 将特定的词加入词典</span><br><span class="line">jieba.add_word(&quot;不安分的小王&quot;)</span><br><span class="line"># 分词</span><br><span class="line">word_list=jieba.cut(obj,cut_all=Flase,HMM=True)</span><br><span class="line">word_split=&quot;\&quot;.join(word_list)</span><br><span class="line">word_split` 便是你最终的分词结果</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提取关键词<br>光得到分词结果我们还不能很好地展现文本内容，这一步，我们需要分词后的统计，提取关键词。为后面可视化做准备。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 提取关键词</span><br><span class="line">rank_K=300 #提取前300的关键词</span><br><span class="line"># 返回带有权重的词语的list</span><br><span class="line">tags = jieba.analyse.extract_tags(wrd_split, topK=rank_K, withWeight=True, allowPOS=())</span><br><span class="line">word_split=&quot;\&quot;.join(word_list)</span><br><span class="line"># 如果不想带权重的话，可以设置 withWeight=False</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存最终关键词和结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;keywords.txt&quot;,&apos;w&apos;,encoding=&apos;UTF-8&apos;) as f:</span><br><span class="line">	for i in range(0,rank_K):</span><br><span class="line">		f.write(str(tags[i])+&apos;\n&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存最终关键词和结果</p>
+<pre><code>![关键词提取结果（部分）](http://upload-images.jianshu.io/upload_images/10426271-6cc70c689fd46ef7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>到此，介绍完了文本准备的相关工作。后面会继续介绍如何<strong>制作词云</strong>。</p>
+<h2 id="制作词云"><a href="#制作词云" class="headerlink" title="制作词云"></a>制作词云</h2><h3 id="1-制作原料："><a href="#1-制作原料：" class="headerlink" title="1. 制作原料："></a>1. 制作原料：</h3><p>主料：文本（QQ聊天记录）<br>辅料：WordArt，jieba（python包）</p>
+<ul>
+<li><strong>jieba</strong>是进行中文分词的一个十分实用的软件包。项目在Github的地址为：<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">https://github.com/fxsjy/jieba</a>  。我们知道，一个文本的含义需要词语串联得到，利用jieba我们可以将中文字符串进行有效的分割，得到组成文本的各个词语。然后基于词语制作我们的词云图。</li>
+</ul>
+<p>安装并使用 jieba 流程，具体参考前一篇博客<br>【传送门】：<a href="http://www.jianshu.com/p/dee4ff08df2a" target="_blank" rel="noopener">http://www.jianshu.com/p/dee4ff08df2a</a></p>
+<ul>
+<li>使用: <code>pip install jieba</code> 进行安装；</li>
+<li>使用  <code>jieba.cut()</code> 进行分词<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">str_cut = jieba.cut(str)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-制作方法："><a href="#2-制作方法：" class="headerlink" title="2. 制作方法："></a>2. 制作方法：</h3><p>介绍制作词云的两种方法：</p>
+<ul>
+<li>基于<a href="https://wordart.com/" target="_blank" rel="noopener">WordArt</a> 进行绘制</li>
+<li>DIY编程实现</li>
+</ul>
+<h4 id="WordArt"><a href="#WordArt" class="headerlink" title="WordArt"></a>WordArt</h4><p><a href="https://wordart.com/" target="_blank" rel="noopener">WordArt</a> 是一款十分好用的在线制作词云的软件。但是，需要付费得到更高清的结果。对于我们普通用户，在网站上申请自己的账号，做几张图娱乐一下就行了。没必要花很多钱去买会员。<br>下面是国外的网友的一些作品：<br><img src="http://upload-images.jianshu.io/upload_images/10426271-cc827201adacd26e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WordArt Trending - 《Rainbow Stitch》[1]"><br><img src="http://upload-images.jianshu.io/upload_images/10426271-c18ff0b7b905eef5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WordArt Trending - 《Emojiiiiiiiiiiiiiiiii...》[2]"><br><img src="http://upload-images.jianshu.io/upload_images/10426271-c45b1359ead1bdec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WordArt Trending -《Mickey Mouse》[3]"></p>
+<blockquote>
+<p>[1]  <a href="https://wordart.com/qhlv4vxrevtz/rainbow-stitch" target="_blank" rel="noopener">https://wordart.com/qhlv4vxrevtz/rainbow-stitch</a><br>[2]  <a href="https://wordart.com/sajylyvwjx6u/emojiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" target="_blank" rel="noopener">https://wordart.com/sajylyvwjx6u/emojiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</a><br>[3]  <a href="https://wordart.com/s3zwaue4bw0s/mickey-mouse" target="_blank" rel="noopener">https://wordart.com/s3zwaue4bw0s/mickey-mouse</a></p>
+</blockquote>
+<p>想要制作自己的词云图，首先要准备好自己的文本材料（在这里，我以qq聊天记录为例子进行演示）：<strong>有关 qq聊天记录的提取和分词,请翻看前篇BLOG</strong>(<a href="http://www.jianshu.com/p/dee4ff08df2a" target="_blank" rel="noopener">传送门</a>)<br>注册登录账户，创建(<strong>CREATE NOW</strong>)自己的项目以后，WordA如图选项栏分为：文本、形状、字体、布局以及风格。<br> <img src="http://upload-images.jianshu.io/upload_images/10426271-4cff7efd18590a43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WordArt"></p>
+<ol>
+<li>导入自己的文本。再导入文本之前需要进行分词操作<br><img src="http://upload-images.jianshu.io/upload_images/10426271-77373895ec8ac902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文本导入.png"></li>
+<li>导入合适的字体。这里需要注意的是WordArt本身没有支持中文的字体。需要我们手动进行导入。可以网上下载一些字体。导入(.ttf)字体文件。然后选择好形状以及布局<br><img src="http://upload-images.jianshu.io/upload_images/10426271-9f9f40a488ed3eeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选项面板"></li>
+<li>然后点击“Visualize”按钮。静静等待一会儿。就可以得到属于自己的词云图啦~<br><img src="http://upload-images.jianshu.io/upload_images/10426271-97810993463fcf5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Valentine 01"><br><img src="http://upload-images.jianshu.io/upload_images/10426271-88e53a2a9a551178.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Valentine 02"><br><img src="http://upload-images.jianshu.io/upload_images/10426271-57aaf4360ced0493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="valentine 03"></li>
+</ol>
+<h3 id="DIY编程"><a href="#DIY编程" class="headerlink" title="DIY编程"></a>DIY编程</h3><p>前面介绍了<a href="https://www.jianshu.com/p/dee4ff08df2a" target="_blank" rel="noopener"><em>文本材料的准备</em> </a>以及 <a href="https://www.jianshu.com/p/9074ca68d51f" target="_blank" rel="noopener"><em>WordArt</em></a> 可视化。这里我介绍如何自己动手DIY属于自己的词云。</p>
+<ul>
+<li><h4 id="材料："><a href="#材料：" class="headerlink" title="材料："></a>材料：</h4><ul>
+<li>文本数据</li>
+<li>python （jieba，wordcloud）<br>安装  <strong>jieba</strong> 和 <strong>wordcloud</strong> ：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jieba</span><br><span class="line">pip install wordcloud</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>wordcloud</strong>用于生成词云，Github地址：<a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">https://github.com/amueller/word_cloud</a><br><strong>wordcloud</strong>生成需要词语作为元素，由于wordcloud是国外的，对中文支持不好，所以我们需要提前对文本进行分词统计处理，得到关键词进行可视化。</p>
+</li>
+<li><h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h4><ul>
+<li><p>方式一：<br>  直接将分词结果放入<code>wordcloud.generate()</code>函数中进行处理（<code>wrd_dict</code>是分词的结果）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from wordcloud import WordCloud </span><br><span class="line">#可视化</span><br><span class="line">BKImg=np.array(Image.open(&quot;heart.jpg&quot;))# 加入自定义背景图片</span><br><span class="line">my_wordcloud = WordCloud(</span><br><span class="line">      background_color=&apos;white&apos;,    # 设置背景颜色</span><br><span class="line">      mask = BKImg,        # 设置背景图片</span><br><span class="line">      max_words = rank_K,            # 设置最大现实的字数</span><br><span class="line">      #stopwords = &quot;小嫣嫣小星星&quot;,        # 设置停用词</span><br><span class="line">      font_path = &apos;FZLTHJW.TTF&apos;,# 设置字体格式，如不设置显示不了中文</span><br><span class="line">      max_font_size = 80,            # 设置字体最大值</span><br><span class="line">      min_font_size = 10,</span><br><span class="line">      # relative_scaling=0.5,</span><br><span class="line">      random_state = 30,            # 设置有多少种随机生成状态，即有多少种配色方案</span><br><span class="line">          scale=1</span><br><span class="line">          ).generate(wrd_dict)</span><br><span class="line">clr=ImageColorGenerator(BKImg) # 加入背景的配色方案</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=clr))`</span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show() #显示</span><br><span class="line">my_wordcloud.to_file(&quot;result1.png&quot;) # 将结果写入png</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二：</p>
+<ul>
+<li>方式一中，将分好的词加入自定义词典，加入<code>generate()</code>函数，但是这样得到的结果却不是很理想，最终 wordcloud 整理出来的结果将人名和一些人所说的话并在一起，导致“小王 哈哈哈”，“小王”都被分进词云的词典，导致“小王”这个词重复出现。</li>
+<li>为了解决这个问题，查看<code>WordCloud</code>这个类（对象），找到<code>generate_from_frequencies(wrd_dict)</code>这个函数，送入的是自定义的字典<code>{[对象]：[频率]}</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 制作词典</span><br><span class="line">wrd_dict=&#123;&#125;</span><br><span class="line">for i in range(0,rank_K):</span><br><span class="line">     wrd_dict[str(tags[i][0])]=round(math.log(tags[i][1]*len_txt,1.5))</span><br><span class="line">#可视化</span><br><span class="line">BKImg=np.array(Image.open(&quot;heart.jpg&quot;))</span><br><span class="line">my_wordcloud = WordCloud(</span><br><span class="line">          background_color=&apos;white&apos;,    # 设置背景颜色</span><br><span class="line">          mask = BKImg,        # 设置背景图片</span><br><span class="line">          max_words = rank_K,            # 设置最大现实的字数</span><br><span class="line">          #stopwords = &quot;小嫣嫣小星星&quot;,        # 设置停用词</span><br><span class="line">          font_path = &apos;FZLTHJW.TTF&apos;,# 设置字体格式，如不设置显示不了中文</span><br><span class="line">          max_font_size = 80,            # 设置字体最大值</span><br><span class="line">          min_font_size = 10,</span><br><span class="line">          # relative_scaling=0.5,</span><br><span class="line">          random_state = 30,            # 设置有多少种随机生成状态，即有多少种配色方案</span><br><span class="line">              scale=1</span><br><span class="line">              ).generate_from_frequencies(wrd_dict)</span><br><span class="line">clr=ImageColorGenerator(BKImg)</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=clr))</span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show()</span><br><span class="line">my_wordcloud.to_file(&quot;result2.png&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>这里 <code>math.log()</code> 是调整聊天记录中出现频率过度频繁的人的名字的权重，使得样 本权重比较平衡。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="成果："><a href="#成果：" class="headerlink" title="成果："></a>成果：</h4><img src="http://upload-images.jianshu.io/upload_images/10426271-a5657d38694db6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="qq 聊天记录词云"><h4 id="大家赶紧动手制作自己的词云吧-趁着情人节前给自己的女朋友一个惊喜-▽"><a href="#大家赶紧动手制作自己的词云吧-趁着情人节前给自己的女朋友一个惊喜-▽" class="headerlink" title="大家赶紧动手制作自己的词云吧~ 趁着情人节前给自己的女朋友一个惊喜(*\^▽\^*)"></a>大家赶紧动手制作自己的词云吧~ 趁着情人节前给自己的女朋友一个惊喜(*\^▽\^*)</h4></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/04/say I love you/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -490,7 +755,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -607,7 +872,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---6.6k words in total.---   </span>
+  <span class="post-count">---7.3k words in total.---   </span>
 </div>
 </br>
 
