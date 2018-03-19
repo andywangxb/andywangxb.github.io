@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ORB-SLAM2 codestructure Tracking.cpp  LocalMapping.cpp  LoopClosing.cpp  Viewer.cpp   stereo_EuRoC LoadImages()   create SLAM system: ORB_SLAM2::System SLAM    vector for tracking time statistics: vTi">
+<meta name="description" content="ORBSLAM2 (Stereo Camera)Related Work Points can be reliably triangled if their depth is less than ~40 times the stereo baseline. modern stereo SLAM: keyframe-based &amp;amp; Local BA stereo LSD SLAMdirect">
 <meta name="keywords" content="SLAM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="orbslam-code">
-<meta property="og:url" content="http://yoursite.com/2018/03/18/orbslam-code/index.html">
+<meta property="og:title" content="orbslam2">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/orbslam2/index.html">
 <meta property="og:site_name" content="THIS IS LIFE!">
-<meta property="og:description" content="ORB-SLAM2 codestructure Tracking.cpp  LocalMapping.cpp  LoopClosing.cpp  Viewer.cpp   stereo_EuRoC LoadImages()   create SLAM system: ORB_SLAM2::System SLAM    vector for tracking time statistics: vTi">
+<meta property="og:description" content="ORBSLAM2 (Stereo Camera)Related Work Points can be reliably triangled if their depth is less than ~40 times the stereo baseline. modern stereo SLAM: keyframe-based &amp;amp; Local BA stereo LSD SLAMdirect">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-19T02:28:29.383Z">
+<meta property="og:updated_time" content="2018-03-19T02:31:50.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="orbslam-code">
-<meta name="twitter:description" content="ORB-SLAM2 codestructure Tracking.cpp  LocalMapping.cpp  LoopClosing.cpp  Viewer.cpp   stereo_EuRoC LoadImages()   create SLAM system: ORB_SLAM2::System SLAM    vector for tracking time statistics: vTi">
+<meta name="twitter:title" content="orbslam2">
+<meta name="twitter:description" content="ORBSLAM2 (Stereo Camera)Related Work Points can be reliably triangled if their depth is less than ~40 times the stereo baseline. modern stereo SLAM: keyframe-based &amp;amp; Local BA stereo LSD SLAMdirect">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/18/orbslam-code/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/orbslam2/"/>
 
 
 
 
 
-  <title>orbslam-code | THIS IS LIFE!</title>
+  <title>orbslam2 | THIS IS LIFE!</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/orbslam-code/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/orbslam2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">orbslam-code</h1>
+          <h1 class="post-title" itemprop="name headline">orbslam2</h1>
         
 
         <div class="post-meta">
@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T04:16:04-07:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T04:29:12-07:00">
                 2018-03-18
               </time>
             
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  640
+                  384
                 </span>
               
 
@@ -392,163 +392,66 @@
       
 
       
-        <h1 id="ORB-SLAM2-code"><a href="#ORB-SLAM2-code" class="headerlink" title="ORB-SLAM2 code"></a>ORB-SLAM2 code</h1><h2 id="structure"><a href="#structure" class="headerlink" title="structure"></a>structure</h2><ul>
-<li><p>Tracking.cpp</p>
+        <h1 id="ORBSLAM2-Stereo-Camera"><a href="#ORBSLAM2-Stereo-Camera" class="headerlink" title="ORBSLAM2 (Stereo Camera)"></a>ORBSLAM2 (<em>Stereo Camera</em>)</h1><h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><ul>
+<li>Points can be reliably triangled if their depth is less than ~40 times the stereo baseline.</li>
+<li>modern stereo SLAM: keyframe-based &amp; Local BA</li>
+<li>stereo LSD SLAM<br>direct method: performance could be <em>severely degraded</em> by unmodeled effects like rolling shutter or non-lambertian reflectance.</li>
+</ul>
+<h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><ol>
+<li><strong>INPUT</strong><br> Frame &gt; </li>
+<li><strong>TRACKING</strong><br> pre-process &gt; pose prediction(motion model) OR relocalization &gt; track local map &gt; new keyframe decision &gt;</li>
+<li><strong>LOCAL MAPPING</strong><br> keyframe insertion &gt; recent mappoints culling &gt; new points creation &gt; local BA &gt; local keyframe culling &gt; </li>
+<li><strong>LOOP CLOSING</strong><br> querying DB &gt; compute SE3 &gt; loop fusion &gt; opt essential graph &gt;</li>
+<li><strong>FULL BA</strong><br> full BA &gt; update map</li>
+</ol>
+<p><em>Tracking</em>.preprocess: ORBExtractor (left &amp; right <em>rectified</em> images) &gt; stereo matching &gt; stereo &amp; mono keypoints</p>
+<h2 id="ORB-SLAM2"><a href="#ORB-SLAM2" class="headerlink" title="ORB-SLAM2"></a>ORB-SLAM2</h2><ol>
+<li>tracking: localize the camera with every frame by finding feature matches to the local map and minimizing the reprojection error applying motion-only BA</li>
+<li>local mapping: local BA</li>
+<li>loop closing: detect large loops &amp; correct drifts</li>
+</ol>
+<p><strong>Notice</strong>: <em>place recognition</em> module based on DBoW2 for relocalization, reinitialization and loop detection.</p>
+<p>use the same ORB features for <em>tracking</em>, <em>mapping</em> and <em>place recognition</em> tasks.</p>
+<p>system handles mono &amp; stereo keypoints (close OR far)</p>
+<p><a href="http://www.codecogs.com/gif.latex?u_R=u_L-\frac{f_x{b}}{d}" target="_blank" rel="noopener"></a></p>
+<p>A. <strong>stereo point</strong></p>
+<ul>
+<li><p>close: associated depth &lt; 40 times the stereo/RGBD baseline</p>
 </li>
-<li><p>LocalMapping.cpp</p>
-</li>
-<li><p>LoopClosing.cpp</p>
-</li>
-<li><p>Viewer.cpp</p>
+<li><p>far: &gt; 40 times (accurate rotation, but weak scale &amp; translation), triangulate when supported by multiple views</p>
+<p><strong>monocular point</strong></p>
+<ul>
+<li>on the <em>left</em> image and stereo match could not be found OR invalid depth value</li>
+</ul>
 </li>
 </ul>
-<h2 id="stereo-EuRoC"><a href="#stereo-EuRoC" class="headerlink" title="stereo_EuRoC"></a>stereo_EuRoC</h2><ul>
-<li>LoadImages()  </li>
-<li>create SLAM system: ORB_SLAM2::System SLAM   </li>
-<li>vector for tracking time statistics: vTimesTrack </li>
-<li>rectify images: rectifyer </li>
-<li>pass images to SLAM: <strong>SLAM.TrackStereo</strong></li>
-<li>wait to load next frame   </li>
-<li>SLAM.Shutdown()   </li>
-<li>time statistics   </li>
-<li>save trajectory</li>
+<p>B. bootstrapping:</p>
+<ul>
+<li>keyframe with the first frame, its pose to the origin, and create initial map with all stereo keypoints</li>
 </ul>
-<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><h3 id="system"><a href="#system" class="headerlink" title="system"></a>system</h3><p><strong>System::System()</strong></p>
-<pre><code>- load ORB vocabulary (ORBVocabulary class, ORBVoc.txt)   
-- create keyframe database (KeyFrameDatabase class, initialized with *mpVocabulary*) 
-- create map  
-- create drawers (used by map)   
-- initialize tracking thread  
-- initialize local mapping thread &amp; launch 
-- initialize loop closing thread &amp; launch
-- initialize Viewer thread &amp; launch
-- set pointers between threads
-</code></pre><ul>
-<li><p>some important names:</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//---ORB</span><br><span class="line">mpVocabulary;</span><br><span class="line">//---keyfrane</span><br><span class="line">mpKeyFrameDatabase;</span><br><span class="line">//---map</span><br><span class="line">mpMap;</span><br><span class="line">//---drawer</span><br><span class="line">mpFrameDrawer;</span><br><span class="line">mpMapDrawer;</span><br><span class="line">//---tracking</span><br><span class="line">mpTracker;</span><br><span class="line">//---local mapping</span><br><span class="line">mpLocalMapper;</span><br><span class="line">mptLocalMapping;</span><br><span class="line">//---loop closing</span><br><span class="line">mpLoopCloser;</span><br><span class="line">mptLoopClosing;</span><br><span class="line">//---viewer</span><br><span class="line">mpViewer</span><br></pre></td></tr></table></figure>
-</li>
+<p>C. BA with mono &amp; stereo constraints</p>
+<ul>
+<li><strong>motion-only BA</strong> R,t, minimizing reprojection error</li>
+<li><strong>Local BA</strong> covisible frame and others (remain fixed in optimization)</li>
+<li><strong>full BA</strong> all key frames &amp; points in the map</li>
 </ul>
-<p><strong>System::TrackStereo</strong></p>
-<pre><code>- check GUI options   
-- mpTracker-&gt;GrabImageStereo
-</code></pre><p><strong>System::SaveTrajectoryTUM</strong></p>
-<pre><code>- mpMap-&gt;GetAllKeyFrames()
+<p>D. loop closing and full BA</p>
+<ul>
+<li>detected and validated</li>
+<li>corrected</li>
+</ul>
+<p>stereo/depth info makes scale observable and geometric validation and the pose-graph opt based on <em>rigid body transformation</em> instead of <em>similarity</em></p>
+<p>IF a new loop is detected while opt, opt aborted and close the loop, which will launch a full BA again.<br>FROM updated to non-updated: <em>spanning tree</em></p>
+<p>E. keyframe insertion</p>
+<ul>
+<li>inserted if num of the tracked close points drops below T1 and up T2</li>
+</ul>
+<p>F. localization mode</p>
+<ul>
+<li>lightweight in well mapped areas</li>
+</ul>
+<p>loop closing deactivated, camera is continuously localized by tracking. VO matches ORB &amp; 3D points</p>
 
-- transforamtion (1st keyframe is the origin) *GetPoseInverse()*
-
-- framepose stored relative to its reference keyframe (lRit), the timestamp (lT), tracking state (lbL)
-
-- if reference keyframe was culled, traverse the spanning tree to get a suitable keyframe
-</code></pre><h3 id="Tracking"><a href="#Tracking" class="headerlink" title="Tracking"></a>Tracking</h3><p><strong>Tracking::GrabImageStereo</strong></p>
-<pre><code>- RGB to Gray
-
-- mCurrentFrame 
-Frame(mImGray,imGrayRight,timestamp,mpORBExtractorLeft,mpORBExtractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth);
-
-- Track()
-
-- return mTcw (camera pose W2C)
-</code></pre><h3 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h3><p><strong>Frame::Frame</strong></p>
-<pre><code>// stereo initialization    
-- Frame ID 
-- get scale level info (ORBextractor class)   
-- ORB Extraction   
-- threadLeft (Frame::ExtractORB &gt; .join())   
-- threadRight (Frame::ExtractORB &gt; .join())   
-- UndistortKeyPoints()   
-- ComputeStereoMatches(): compute depths if matches   
-- depth info: mvuRight &amp; mvDepth  
-- mvpMapPoints, mvOutlier
-</code></pre><p><strong>Frame::UndistortKeyPoints</strong></p>
-<pre><code>- *N* feature points  
-- cv::undistortPoints()   
-- mvKeysUn: corrected // mvKeys, mvKeysRight   
-- **redundant** in stereo case
-</code></pre><p><strong>Frame::ComputeStereoMatches</strong></p>
-<pre><code>- assign keypoints to row table // vRowIndices
-- compute range of rows
-- set limits for search //minD, maxD, minZ
-- for each left keypoint search a match in the right
-- SAD (subpixel match by correlation, IF |deltaR| &gt;1, continue)
-- matched points culling // mvuRight, mvDepth
-</code></pre><p><strong>Frame::UnprojectStereo</strong></p>
-<pre><code>// backproject a keypoint (if stereo/depth info available) into 3D world coordinates.
-
-// Rotation, translation &amp; camera center
-mRcw;   //Rotation from world2camera
-mtcw;   //Translation from world2camera
-mRwc;   //Rotation from camera2world
-m0w;    //Translation from camera2world;
-</code></pre><h3 id="Tracking-1"><a href="#Tracking-1" class="headerlink" title="Tracking"></a>Tracking</h3><pre><code>//      |fx 0   cx|
-//  K = |0  fy  cy| 
-//      |0  0   1 |
-//  corrected coef: [k1 k2 p1 p2 k3]
-//  mThDepth: Threshold4 close/far points
-</code></pre><p><strong>Tracking::Track()</strong>    </p>
-<pre><code>IF NOT_INITIALIZED
-- StereoInitialization()
-ELSE
-- CheckReplacedInLastFrame()
-    - IF mVelocity.empty()
-    TrackReferenceKeyFrame()
-    - ELSE
-    TrackWithMotionModel()
-</code></pre><p><strong>Tracking::StereoInitialization</strong></p>
-<pre><code>IF N &gt; 500
-- set pose to the origin
-- create keyframe
-- insert keyframe in the map
-- create mappoints and associate to keyframe 
-// Frame::UnprojectStereo()
-// MapPoint::ComputeDistinctiveDescriptors() &gt; find best descriptors for MapPoint; using median of dists
-// MapPoint::UpdateNormalAndDepth() &gt; update observations: mNormalVector &amp; mfMaxDistance, mfMinDistance
-</code></pre><p><strong>Tracking::TrackReferenceFrame()</strong></p>
-<pre><code>- mCurrentFrame.ComputeBoW();
-- ORBmatcher.SearchByBoW()
-- initialize pose by *mLastFrame*
-- Optimizer::PoseOptimization(&amp;mCurrentFrame)
-- discard outliers
-</code></pre><p><strong>Tracking::TrackWithMotionModel</strong></p>
-<pre><code>- Tracking::UpdateLastFrame
-    - Const Velocity Model, estimate current pose
-    - project points seen in previous frame
-- Based on CVM, tracking MapPoints in the last frame
-    - IF nmathces &lt; 20, uses a wider window search (th &gt; 2*th) 
-    //---ORBmatcher.SearchByProjection
-- optimize frame pose with all matches 
-// Optimizer::PoseOptimization(&amp;mCurrentFrame)
-- discard outliers of mvpMapPoints(feature &gt;&gt; MapPoint)
-</code></pre><p><strong>Tracking::UpdateLastFrame()</strong></p>
-<pre><code>- update pose according to reference keyframe
-// mlRelativeFramePoses: store the reference keyframe for each frame and its relative transformation
-- IF stereo OR RGBD
-    - sort points according to measured depth
-    - rank depths in ascending order
-    - IF nPoints &gt; 100, break
-</code></pre><p><strong>Tracking::Relocalization()</strong></p>
-<pre><code>Relocalization is performed when tracking is lost
-- compte BoW Vector
-- mpKeyFrameDB-&gt;DetectRelocalizationCandidates(&amp;mCurrentFrame)
-- ORB matching with each candidate 
-    - IF enough matches, set up PnP solver
-- perform iterations of P4P RANSAC, until a camera pose supported by enough inliers
-- Optimizer::PoseOptimization(&amp;mCurrentFrame)
-- IF few inliers,search by projection &amp; optimization
-</code></pre><h2 id="ORBmatcher"><a href="#ORBmatcher" class="headerlink" title="ORBmatcher"></a>ORBmatcher</h2><p><strong>ORBmatcher::SearchByProjection</strong></p>
-<p>SearchByProjection(currentFrame, lastFrame, th, bMono)</p>
-<pre><code>1. project MapPoints in the last frame
-2. match &amp; culling
-</code></pre><h2 id="KeyFrameDatabase"><a href="#KeyFrameDatabase" class="headerlink" title="KeyFrameDatabase"></a>KeyFrameDatabase</h2><p><strong>KeyFrameDatabase::DetectRelocalizationCandidates</strong></p>
-<pre><code>find similar keyframes in relocalization
-- search all keyframes that share a word with current frame
-- find keyframes share enough words &amp; decide 
-    Th: minCommonWords = maxCommonWords*0.8f
-- compute similarity score
-- accumulate score by covisiblity
-    One Group: Keyframe + GetBestCovisibilityKeyFrames(10)
-    &gt;&gt; bestAccScore &amp; minScoreToRetain = 0.75f*bestAccScore
-    return group(&gt;minScoreToRetain) memeber with highest score
-</code></pre>
       
     </div>
 
@@ -623,8 +526,8 @@ ELSE
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/25/slam-learning/" rel="next" title="slam-learning">
-                <i class="fa fa-chevron-left"></i> slam-learning
+              <a href="/2018/03/18/orbslam-code/" rel="next" title="orbslam-code">
+                <i class="fa fa-chevron-left"></i> orbslam-code
               </a>
             
           </div>
@@ -632,10 +535,6 @@ ELSE
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/18/orbslam2/" rel="prev" title="orbslam2">
-                orbslam2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -815,7 +714,7 @@ ELSE
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ORB-SLAM2-code"><span class="nav-number">1.</span> <span class="nav-text">ORB-SLAM2 code</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#structure"><span class="nav-number">1.1.</span> <span class="nav-text">structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stereo-EuRoC"><span class="nav-number">1.2.</span> <span class="nav-text">stereo_EuRoC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">1.3.</span> <span class="nav-text">code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#system"><span class="nav-number">1.3.1.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tracking"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tracking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frame"><span class="nav-number">1.3.3.</span> <span class="nav-text">Frame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tracking-1"><span class="nav-number">1.3.4.</span> <span class="nav-text">Tracking</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORBmatcher"><span class="nav-number">1.4.</span> <span class="nav-text">ORBmatcher</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KeyFrameDatabase"><span class="nav-number">1.5.</span> <span class="nav-text">KeyFrameDatabase</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ORBSLAM2-Stereo-Camera"><span class="nav-number">1.</span> <span class="nav-text">ORBSLAM2 (Stereo Camera)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">1.1.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structure"><span class="nav-number">1.2.</span> <span class="nav-text">Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM2"><span class="nav-number">1.3.</span> <span class="nav-text">ORB-SLAM2</span></a></li></ol></li></ol></div>
             
 
           </div>
