@@ -437,6 +437,477 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/orbslam-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xingbo WANG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THIS IS LIFE!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/18/orbslam-code/" itemprop="url">orbslam-code</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T19:16:04+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Vision/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Vision</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Vision/SLAM/" itemprop="url" rel="index">
+                    <span itemprop="name">SLAM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  384
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ORBSLAM2-Stereo-Camera"><a href="#ORBSLAM2-Stereo-Camera" class="headerlink" title="ORBSLAM2 (Stereo Camera)"></a>ORBSLAM2 (<em>Stereo Camera</em>)</h1><h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><ul>
+<li>Points can be reliably triangled if their depth is less than ~40 times the stereo baseline.</li>
+<li>modern stereo SLAM: keyframe-based &amp; Local BA</li>
+<li>stereo LSD SLAM<br>direct method: performance could be <em>severely degraded</em> by unmodeled effects like rolling shutter or non-lambertian reflectance.</li>
+</ul>
+<h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><ol>
+<li><strong>INPUT</strong><br> Frame &gt; </li>
+<li><strong>TRACKING</strong><br> pre-process &gt; pose prediction(motion model) OR relocalization &gt; track local map &gt; new keyframe decision &gt;</li>
+<li><strong>LOCAL MAPPING</strong><br> keyframe insertion &gt; recent mappoints culling &gt; new points creation &gt; local BA &gt; local keyframe culling &gt; </li>
+<li><strong>LOOP CLOSING</strong><br> querying DB &gt; compute SE3 &gt; loop fusion &gt; opt essential graph &gt;</li>
+<li><strong>FULL BA</strong><br> full BA &gt; update map</li>
+</ol>
+<p><em>Tracking</em>.preprocess: ORBExtractor (left &amp; right <em>rectified</em> images) &gt; stereo matching &gt; stereo &amp; mono keypoints</p>
+<h2 id="ORB-SLAM2"><a href="#ORB-SLAM2" class="headerlink" title="ORB-SLAM2"></a>ORB-SLAM2</h2><ol>
+<li>tracking: localize the camera with every frame by finding feature matches to the local map and minimizing the reprojection error applying motion-only BA</li>
+<li>local mapping: local BA</li>
+<li>loop closing: detect large loops &amp; correct drifts</li>
+</ol>
+<p><strong>Notice</strong>: <em>place recognition</em> module based on DBoW2 for relocalization, reinitialization and loop detection.</p>
+<p>use the same ORB features for <em>tracking</em>, <em>mapping</em> and <em>place recognition</em> tasks.</p>
+<p>system handles mono &amp; stereo keypoints (close OR far)</p>
+<p><a href="http://www.codecogs.com/gif.latex?u_R=u_L-\frac{f_x{b}}{d}" target="_blank" rel="noopener"></a></p>
+<p>A. <strong>stereo point</strong></p>
+<pre><code>- close: associated depth &lt; 40 times the stereo/RGBD baseline
+
+- far: &gt; 40 times (accurate rotation, but weak scale &amp; translation), triangulate when supported by multiple views
+</code></pre><p>   <strong>monocular point</strong></p>
+<pre><code>- on the *left* image and stereo match could not be found OR invalid depth value
+</code></pre><p>B. bootstrapping:</p>
+<p>keyframe with the first frame, its pose to the origin, and create initial map with all stereo keypoints</p>
+<p>C. BA with mono &amp; stereo constraints</p>
+<pre><code>- **motion-only BA** R,t, minimizing reprojection error
+- **Local BA** covisible frame and others (remain fixed in optimization)
+- **full BA** all key frames &amp; points in the map
+</code></pre><p>D. loop closing and full BA</p>
+<pre><code>- detected and validated
+- corrected
+</code></pre><p>stereo/depth info makes scale observable and geometric validation and the pose-graph opt based on <em>rigid body transformation</em> instead of <em>similarity</em></p>
+<p>IF a new loop is detected while opt, opt aborted and close the loop, which will launch a full BA again.<br>FROM updated to non-updated: <em>spanning tree</em></p>
+<p>E. keyframe insertion</p>
+<pre><code>- inserted if num of the tracked close points drops below T1 and up T2
+</code></pre><p>F. localization mode</p>
+<pre><code>- lightweight in well mapped areas
+</code></pre><p>loop closing deactivated, camera is continuously localized by tracking. VO matches ORB &amp; 3D points</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/25/slam-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xingbo WANG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THIS IS LIFE!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/25/slam-learning/" itemprop="url">slam-learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-26T04:24:00+08:00">
+                2018-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/slam/" itemprop="url" rel="index">
+                    <span itemprop="name">slam</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  452
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="SLAM"><a href="#SLAM" class="headerlink" title="SLAM"></a>SLAM</h3><p><strong>slam</strong>, (Simultaneous Localization and Mapping)</p>
+<p></p><p align="center">传感器数据 &rarr; 前端视觉里程计 &rarr; 后端非线性优化 &rarr; 建图<br>    &rarr; 回环检测 &rarr;</p>    <p></p>
+<h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><h4 id="运动方程"><a href="#运动方程" class="headerlink" title="运动方程"></a>运动方程</h4><p><img src="http://latex.codecogs.com/gif.latex?x_k=f(x_{k-1},u_k,w_k)" alt=""></p>
+<p>其中，u<sub>k</sub>是运动传感器的参数，w<sub>k</sub>是噪声</p>
+<h4 id="观测方程"><a href="#观测方程" class="headerlink" title="观测方程"></a>观测方程</h4><p><img src="http://latex.codecogs.com/gif.latex?z_{k,j}=h(y_j,x_k,v_{k,j})" alt=""></p>
+<p>y<sub>j</sub>是路标点，z<sub>k,j</sub>是观测数据<br><img src="http://latex.codecogs.com/gif.latex?a\times{b}=\begin{Vmatrix}i&amp;j&amp;k\\a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\end{Vmatrix}=\begin{bmatrix}{a_2}{b_3}-{a_3}{b_2}\\{a_3}{b_1}-{a_1}{b_3}\\{a_1}{b_2}-{a_2}{b_1}\\\end{bmatrix}=\begin{bmatrix}0&amp;-a_3&amp;a_2\\a_3&amp;0&amp;-a_1\\-a_2&amp;a_1&amp;0\\\end{bmatrix}b\triangleq{a\wedge{b}}" alt=""></p>
+<p><strong>特殊正交群</strong><br><img src="http://latex.codecogs.com/gif.latex?SO(n)=\{R\in{R^{n\times{n}}|RR^T=I\}" alt=""></p>
+<p><strong>特殊欧式群</strong><br><img src="http://latex.codecogs.com/gif.latex?SE(3)={T=\begin{bmatrix}R&amp;t\\0^{T}&amp;1\\\end{bmatrix}}" alt=""></p>
+<p><strong>罗德里格斯公式</strong><br><img src="http://latex.codecogs.com/gif.latex?R=\cos\theta{I}+(1-\cos{\theta})nn^{T}+\sin\theta{n}^{\wedge}" alt=""></p>
+<ul>
+<li>tr(R)=1+2cos&theta;</li>
+<li>Rn=n</li>
+</ul>
+<p><strong>相似变换</strong><br><img src="http://latex.codecogs.com/gif.latex?T_s=\begin{bmatrix}sR&amp;t\\0^T&amp;1\\\end{bmatrix}" alt=""></p>
+<p><strong>仿射变换</strong><br><img src="http://latex.codecogs.com/gif.latex?T_A=\begin{bmatrix}A&amp;t\\0^T&amp;1\end{bmatrix}" alt=""></p>
+<p><strong>射影变换</strong><br><img src="http://latex.codecogs.com/gif.latex?T_p=\begin{bmatrix}A&amp;t\\a^T&amp;v\end{bmatrix}" alt=""></p>
+<p><strong>李代数</strong><br><img src="http://latex.codecogs.com/gif.latex?\mathfrak{so}(3)=\{\phi\in\mathbb{R}^3,\boldsymbol{\phi}=\phi^{\wedge}\in\mathbb{R}^{3\times{3}}\}" alt="so(3)李代数"></p>
+<p><img src="http://latex.codecogs.com/gif.latex?\mathfrak{se}(3)=\{\xi^\wedge=\begin{bmatrix}\phi^{\wedge}&amp;\rho\\0^T&amp;0\\\end{bmatrix}\in\mathbb{R}^{4\times{4}}\}" alt="se(3)李代数"></p>
+<p><strong>SO(3)指数映射</strong><br><img src="http://latex.codecogs.com/gif.latex?Z\begin{bmatrix}u\\v\\1\end{bmatrix}=\begin{bmatrix}f_x&amp;0&amp;c_x\\0&amp;f_y&amp;c_y\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}X\\Y\\Z\end{bmatrix}\triangleq{KP}" alt=""></p>
+<p><strong>SE(3)指数映射</strong><br><img src="http://latex.codecogs.com/gif.latex?ZP_{uv}=Z\begin{bmatrix}u\\v\\1\end{bmatrix}=K(RP_w+t)=KTP_w" alt=""></p>
+<p>其中，<img src="http://latex.codecogs.com/gif.latex?\frac{z-f}{z}=\frac{b-u_L+u_R}{b}" alt=""> </p>
+<p><strong>李代数求导&amp;扰动模型</strong><br>李代数求导：<br><img src="http://latex.codecogs.com/gif.latex?\frac{\partial(RP)}{\partial\phi}=(-Rp)^\wedge{J_l}" alt=""></p>
+<p>扰动模型(左)：<br><img src="http://latex.codecogs.com/gif.latex?\frac{\partial(Rp)}{\partial\varphi}=-(Rp)^\wedge" alt=""></p>
+<h3 id="相机与图像"><a href="#相机与图像" class="headerlink" title="相机与图像"></a>相机与图像</h3><p>相机模型:<br><img src="http://latex.codecogs.com/gif.latex?\frac{Z}{f}=-\frac{X}{X&#39;}=-\frac{Y}{Y&#39;}" alt=""></p>
+<p><img src="http://latex.codecogs.com/gif.latex?Z\begin{bmatrix}u\\v\\1\end{bmatrix}=\begin{bmatrix}f_x&amp;0&amp;c_x\\0&amp;f_y&amp;c_y\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}X\\Y\\Z\end{bmatrix}\triangleq{KP}" alt=""></p>
+<p><img src="http://latex.codecogs.com/gif.latex?ZP_{uv}=Z\begin{bmatrix}u\\v\\1\end{bmatrix}=K(RP_w+t)=KTP_w" alt=""></p>
+<p>切向畸变&amp;径向畸变<br>双目相机模型<br>  <img src="http://latex.codecogs.com/gif.latex?\frac{z-f}{z}=\frac{b-u_L+u_R}{b}" alt=""></p>
+<p>  得到，<img src="http://latex.codecogs.com/gif.latex?z=\frac{fb}{d},d=u_L-u_R" alt=""></p>
+<h3 id="非线性优化"><a href="#非线性优化" class="headerlink" title="非线性优化"></a>非线性优化</h3><h4 id="非线性最小二乘"><a href="#非线性最小二乘" class="headerlink" title="非线性最小二乘"></a>非线性最小二乘</h4><p><img src="http://latex.codecogs.com/gif.latex?\begin{Vmatrix}f(x+\Delta{x})\end{Vmatrix}_2^2\approx\begin{Vmatrix}f(x)\end{Vmatrix}_2^2+J(x)\Delta{x}+\frac{1}{2}\Delta{x}^{T}H\Delta{x}" alt=""></p>
+<ul>
+<li>保留一阶梯度<br><img src="http://latex.codecogs.com/gif.latex?\Delta{x}*=-J^T(x)" alt=""></li>
+</ul>
+<ul>
+<li>保留二阶梯度<br><img src="http://latex.codecogs.com/gif.latex?H\Delta{x}=-J^T" alt=""></li>
+</ul>
+<p><strong>高斯牛顿法</strong><br><img src="http://latex.codecogs.com/gif.latex?f(x+\Delta{x})\approxf(x)+J(x)\Delta{x}" alt=""></p>
+<ul>
+<li>最小二乘:<br><img src="http://latex.codecogs.com/gif.latex?J(x)^{T}J(x)\Delta{x}=-J(x)^Tf(x)" alt=""></li>
+</ul>
+<p>令左式系数为H，右边为g：<img src="http://latex.codecogs.com/gif.latex?H\Delta{x}=g" alt=""></p>
+<p><strong>列文伯格-马尔夸尔特法</strong><br>定义&rho;来确定信赖区域范围<br><img src="http://latex.codecogs.com/gif.latex?\rho=\frac{f(x+\Delta{x}-f(x))}{J(x)\Delta{x}}" alt=""></p>
+<p>第k次迭代求解：<br><img src="http://latex.codecogs.com/gif.latex?\min_{\Delta{x_k}}\frac{1}{2}\begin{Vmatrix}f(x_k)+J(x_k)\Delta{x_k}\end{Vmatrix}^{2},s.t.\begin{Vmatrix}D\Delta{x_k}\end{Vmatrix}\leqslant\mu{,}" alt=""></p>
+<ul>
+<li>其中，D=I<br>解得：<img src="http://latex.codecogs.com/gif.latex?(H+\lambda{I})\Delta{x}=g" alt=""></li>
+</ul>
+<h3 id="视觉里程计1"><a href="#视觉里程计1" class="headerlink" title="视觉里程计1"></a>视觉里程计1</h3><p>前端 &rarr; 后端,提供好的初始值;<em>特征点</em>（Feature）作为路标,由关键点&amp;描述子组成。</p>
+<h4 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h4><p><strong>ORB</strong></p>
+<ul>
+<li>FAST角点提取<ul>
+<li>极大值抑制(NMS)</li>
+<li>灰度质心法(Intensity Centroid)</li>
+</ul>
+</li>
+<li>BRIEF描述子<ul>
+<li>汉明距离(Hamming Distance)</li>
+<li>快速近似最近邻(FLANN)</li>
+</ul>
+</li>
+</ul>
+<h4 id="根据匹配点估计相机运动"><a href="#根据匹配点估计相机运动" class="headerlink" title="根据匹配点估计相机运动"></a>根据匹配点估计相机运动</h4><ul>
+<li>对极几何<br>P=[X,Y,Z]<sup>T</sup>,<br>s<sub>1</sub>p<sub>1</sub>=KP, s<sub>2</sub>p<sub>2</sub>=K(RP+t)<br>得到：Ｅ＝t^R, &nbsp;F=K<sup>-T</sup>EK<sup>-1</sup>,&nbsp;x<sub>2<sup>T</sup></sub>Ex<sub>1</sub>=p<sub>2</sub><sup>T</sup>Fp<sub>1</sub>=0<ul>
+<li>本质矩阵<br>E=t^R</li>
+<li>单应矩阵<br><img src="http://latex.codecogs.com/gif.latex?n^Tp+d=0,p2=Hp1,H=K(R-\frac{tn^T}{d})K^{-1}p_1" alt=""></li>
+<li>本质矩阵<br><img src="http://latex.codecogs.com/gif.latex?s_1x_1=s_2Rx_2+t" alt=""></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>ICP(双目相机 OR RGB-D)</p>
+</li>
+<li><p>PnP(3D-2D)<br>重投影误差<br><img src="http://latex.codecogs.com/gif.latex?\xi^*=arg\min_{\xi}\frac{1}{2}\sum_{i=1}^n\begin{Vmatrix}u_i-\frac{1}{s_i}Kexp(\xi^\wedge)P_i\end{Vmatrix}_2^2" alt=""><br>关于相机位姿的一阶变化关系：<br><img src="http://latex.codecogs.com/gif.latex?\frac{\partial{e}}{\partial\delta\xi}=\lim_{\delta\xi\rightarrow{0}}\frac{e(\partial\xi\oplus\xi)}{\partial\xi}=\frac{\partial{e}}{\partial{P&#39;}}\frac{\partial{P&#39;}}{\partial\delta\xi}" alt=""><br>同理，得到关于位置的一阶变化关系<br><img src="http://latex.codecogs.com/gif.latex?\frac{\partial{e}}{\partial{P}}=\frac{\partial{e}}{\partial{P&#39;}}\frac{\partial{P&#39;}}{\partial{P}}" alt=""></p>
+</li>
+</ul>
+<h3 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h3><p><strong>《Real-Time Visual Odometry from Dense RGB-D Images》</strong></p>
+<ul>
+<li>energy minimizaiton</li>
+<li>maximizing photoconsistency</li>
+<li>coarse-to-fine</li>
+</ul>
+<p><strong>《Semi-direct tracking and mapping with RGB-D camera for MAV》</strong></p>
+<ul>
+<li>direct method</li>
+<li>feature<br>measurement error function (depth &amp; geometric)</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/22/ssd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1763,7 +2234,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1774,7 +2245,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1785,7 +2256,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1880,7 +2351,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---5.1k words in total.---   </span>
+  <span class="post-count">---5.9k words in total.---   </span>
 </div>
 </br>
 
