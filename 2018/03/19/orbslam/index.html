@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="programming,fun," />
+  <meta name="keywords" content="SLAM," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="用各种编程语言来说 I love you 1. JAVA123456789public class HelloWorld   #如果有 public 类的话，类名必须和文件同名，注意大小写 &amp;#123;  #Java 入口程序，程序从此入口   public static void main(String[] args)   &amp;#123;   #向控制台打印一条语句     System.out.">
-<meta name="keywords" content="programming,fun">
+<meta name="description" content="ORB-SLAM: a Versatile and Accurate Monocular SLAM SystemIntroduction Use ORB features Real time operation, using covisibility graph real time loop closing based on essential graph real time relocaliza">
+<meta name="keywords" content="SLAM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Say I love you">
-<meta property="og:url" content="http://yoursite.com/2018/02/04/say I love you/index.html">
+<meta property="og:title" content="orbslam">
+<meta property="og:url" content="http://yoursite.com/2018/03/19/orbslam/index.html">
 <meta property="og:site_name" content="THIS IS LIFE!">
-<meta property="og:description" content="用各种编程语言来说 I love you 1. JAVA123456789public class HelloWorld   #如果有 public 类的话，类名必须和文件同名，注意大小写 &amp;#123;  #Java 入口程序，程序从此入口   public static void main(String[] args)   &amp;#123;   #向控制台打印一条语句     System.out.">
+<meta property="og:description" content="ORB-SLAM: a Versatile and Accurate Monocular SLAM SystemIntroduction Use ORB features Real time operation, using covisibility graph real time loop closing based on essential graph real time relocaliza">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-05T12:41:02.048Z">
+<meta property="og:image" content="http://www.codecogs.com/gif.latex?R_H=\frac{S_H}{S_H+S_F}">
+<meta property="og:updated_time" content="2018-03-19T08:57:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Say I love you">
-<meta name="twitter:description" content="用各种编程语言来说 I love you 1. JAVA123456789public class HelloWorld   #如果有 public 类的话，类名必须和文件同名，注意大小写 &amp;#123;  #Java 入口程序，程序从此入口   public static void main(String[] args)   &amp;#123;   #向控制台打印一条语句     System.out.">
+<meta name="twitter:title" content="orbslam">
+<meta name="twitter:description" content="ORB-SLAM: a Versatile and Accurate Monocular SLAM SystemIntroduction Use ORB features Real time operation, using covisibility graph real time loop closing based on essential graph real time relocaliza">
+<meta name="twitter:image" content="http://www.codecogs.com/gif.latex?R_H=\frac{S_H}{S_H+S_F}">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/04/say I love you/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/19/orbslam/"/>
 
 
 
 
 
-  <title>Say I love you | THIS IS LIFE!</title>
+  <title>orbslam | THIS IS LIFE!</title>
   
 
 
@@ -273,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/04/say I love you/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/orbslam/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -290,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Say I love you</h1>
+          <h1 class="post-title" itemprop="name headline">orbslam</h1>
         
 
         <div class="post-meta">
@@ -302,8 +304,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T08:00:00-08:00">
-                2018-02-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T01:46:18+08:00">
+                2018-03-19
               </time>
             
 
@@ -325,8 +327,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index">
-                    <span itemprop="name">life</span>
+                  <a href="/categories/Robotics/" itemprop="url" rel="index">
+                    <span itemprop="name">Robotics</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Robotics/SLAM/" itemprop="url" rel="index">
+                    <span itemprop="name">SLAM</span>
                   </a>
                 </span>
 
@@ -356,7 +369,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  336
+                  661
                 </span>
               
 
@@ -381,17 +394,230 @@
       
 
       
-        <h3 id="用各种编程语言来说-I-love-you"><a href="#用各种编程语言来说-I-love-you" class="headerlink" title="用各种编程语言来说 I love you"></a>用各种编程语言来说 I love you</h3><p><br></p>
-<h4 id="1-JAVA"><a href="#1-JAVA" class="headerlink" title="1. JAVA"></a>1. JAVA</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld   #如果有 public 类的话，类名必须和文件同名，注意大小写 </span><br><span class="line">&#123; </span><br><span class="line"> #Java 入口程序，程序从此入口 </span><br><span class="line">  public static void main(String[] args) </span><br><span class="line">  &#123; </span><br><span class="line">  #向控制台打印一条语句 </span><br><span class="line">    System.out.println(&quot;I love you!&quot;); </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-C"><a href="#2-C" class="headerlink" title="2. C"></a>2. C</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;  </span><br><span class="line">int main()                #main 入口函数 </span><br><span class="line">&#123; </span><br><span class="line">  printf(&quot;I love you!&quot;); #printf 函数打印 </span><br><span class="line">  return 1;               #函数返回值 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3-C"><a href="#3-C" class="headerlink" title="3. C++"></a>3. C++</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;               //std::cout 要用到的头文件  </span><br><span class="line">#include &lt;stdio.h&gt;                //标准输入输出头文件  </span><br><span class="line">  </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">  printf(&quot;I love you!--Way 1\n&quot;);    //printf 语句打印 </span><br><span class="line">  puts(&quot;I love you!--Way 2&quot;);        //puts 语句 </span><br><span class="line">  puts(&quot;I love&quot; &quot; &quot; &quot;you!--Way 3&quot;); //字符串拼接 </span><br><span class="line">  std::cout &lt;&lt; &quot;I love you!--Way 4&quot; &lt;&lt; std::endl; //C++ 教科书上写法 </span><br><span class="line">  return 1;                                        //作为注释 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-python"><a href="#4-python" class="headerlink" title="4. python"></a>4. python</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print &quot;I love you!&quot;   #Python 2.x </span><br><span class="line">I love you! </span><br><span class="line">&gt;&gt;&gt; print(&quot;I love you!&quot;)  #Python 3.x</span><br><span class="line">I love you!</span><br></pre></td></tr></table></figure>
-<h4 id="5-C"><a href="#5-C" class="headerlink" title="5. C"></a>5. C</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">class TestApp</span><br><span class="line">&#123;</span><br><span class="line">	public static void main()</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WirteLIne(&quot;I love you!&quot;);</span><br><span class="line">		Console.ReadKey();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6-JavaScript"><a href="#6-JavaScript" class="headerlink" title="6. JavaScript"></a>6. JavaScript</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var sys = require (&quot;sys&quot;);</span><br><span class="line">sys.puts (&quot;I love you!&quot;);</span><br><span class="line">&gt;&gt;&gt; node HelloWorld.js</span><br></pre></td></tr></table></figure>
-<h4 id="7-R"><a href="#7-R" class="headerlink" title="7. R"></a>7. R</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;I love you!&quot;)</span><br></pre></td></tr></table></figure>
-<h4 id="8-HTML"><a href="#8-HTML" class="headerlink" title="8. HTML"></a>8. HTML</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;This is the first program!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;I love you!&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="9-VB"><a href="#9-VB" class="headerlink" title="9. VB"></a>9. VB</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Module Hello</span><br><span class="line">	Sub Main()</span><br><span class="line">		MsgBox(&quot;I love you!&quot;)</span><br><span class="line">	End Sub</span><br><span class="line">End Module</span><br></pre></td></tr></table></figure>
-<h4 id="10-SHELL"><a href="#10-SHELL" class="headerlink" title="10. SHELL"></a>10. SHELL</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo &quot;I love you!&quot;</span><br></pre></td></tr></table></figure>
+        <h1 id="ORB-SLAM-a-Versatile-and-Accurate-Monocular-SLAM-System"><a href="#ORB-SLAM-a-Versatile-and-Accurate-Monocular-SLAM-System" class="headerlink" title="ORB-SLAM: a Versatile and Accurate Monocular SLAM System"></a>ORB-SLAM: a Versatile and Accurate Monocular SLAM System</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>Use ORB features</li>
+<li>Real time operation, using <strong>covisibility graph</strong></li>
+<li>real time loop closing based on <strong>essential graph</strong></li>
+<li>real time relocalization</li>
+<li>initialization &amp; model selection</li>
+<li><em>survival of the fittest approach</em> to the map point &amp; keyframe selection</li>
+</ul>
+<h2 id="System-Overview"><a href="#System-Overview" class="headerlink" title="System Overview"></a>System Overview</h2><h3 id="Feature-Choice"><a href="#Feature-Choice" class="headerlink" title="Feature Choice"></a>Feature Choice</h3><ul>
+<li>ORB</li>
+</ul>
+<h3 id="Three-Threads-Tracking-Local-Mapping-amp-Loop-Closing"><a href="#Three-Threads-Tracking-Local-Mapping-amp-Loop-Closing" class="headerlink" title="Three Threads: Tracking, Local Mapping &amp; Loop Closing"></a>Three Threads: Tracking, Local Mapping &amp; Loop Closing</h3><ul>
+<li><p><strong>Tracking</strong><br>localizing camera and deciding when to insert a keyframe </p>
+<ul>
+<li>initial feature matching &amp; <em>motion-only</em> BA</li>
+<li>IF  tracking is lost<ul>
+<li>place recognition &gt; global relocalization</li>
+</ul>
+</li>
+<li>initial camera pose &amp; feature matchings<ul>
+<li>local visible map using covisibility graph of keyframes</li>
+</ul>
+</li>
+<li>matches found by reprojection &amp; camera pose opt again</li>
+<li>decide whether to insert keyframe</li>
+</ul>
+</li>
+<li><p><strong>Local Mapping</strong></p>
+<ul>
+<li>process new keyframes and <em>local BA</em></li>
+<li>unmatched ORB searched in connected keyframes in the covisibility graph to triangulate new points </li>
+<li>exigent point culling</li>
+</ul>
+</li>
+<li><p><strong>Loop Closing</strong></p>
+<ul>
+<li>search for loops with every new keyframe</li>
+<li>IF loop is detected<ul>
+<li>compute similarity transformation</li>
+<li>both sides of the loop is aligned and duplicated points fused</li>
+<li>pose graph opt &gt; global consistency<ul>
+<li>MAIN NOVELTY: opt on <em>Essential Graph</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="MapPoints-KeyFrames-Selection"><a href="#MapPoints-KeyFrames-Selection" class="headerlink" title="MapPoints, KeyFrames, Selection"></a>MapPoints, KeyFrames, Selection</h3><p><strong>MapPoint p<sub>i</sub></strong></p>
+<ul>
+<li>3D position: X<sub>w,i</sub></li>
+<li>The viewing direction: n<sub>i</sub></li>
+<li>ORB descriptor: D<sub>i</sub></li>
+<li>d<sub>max</sub>,d<sub>min</sub>: maximum distance &amp; minimum distance the point can be observed</li>
+</ul>
+<p><strong>KeyFrame K<sub>i</sub></strong></p>
+<ul>
+<li>T<sub>iw</sub>, tranformation world2camera</li>
+<li>Camera intrinsics, including focal length &amp; principal point </li>
+<li>Undistorted coordinates of ORB features</li>
+</ul>
+<h3 id="Covisibility-Graph-amp-Essential-Graph"><a href="#Covisibility-Graph-amp-Essential-Graph" class="headerlink" title="Covisibility Graph &amp; Essential Graph**"></a>Covisibility Graph &amp; Essential Graph**</h3><ul>
+<li><p>Covisibility Graph: Undirected Weighted Graph</p>
+<ul>
+<li>node: keyframe</li>
+<li>edge: shared observations of the same MapPoints</li>
+</ul>
+</li>
+<li><p>Essential Graph</p>
+<ul>
+<li>spanning tree<ul>
+<li>INSERTED: new keyframe linked tokeyframe which shares most point observations</li>
+<li>ERASED: update links affected by that KeyFrame</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="BoW-Place-Recognition"><a href="#BoW-Place-Recognition" class="headerlink" title="BoW Place Recognition"></a>BoW Place Recognition</h3><ul>
+<li>DBoW2: loop detection &amp; relocalization</li>
+</ul>
+<h2 id="Automatic-Map-Initialization"><a href="#Automatic-Map-Initialization" class="headerlink" title="Automatic Map Initialization"></a>Automatic Map Initialization</h2><p><strong>GOAL</strong></p>
+<p>compute relative pose between 2 frames &amp; triangulate an initial set of MapPoints.</p>
+<p><strong>STEPS</strong></p>
+<ul>
+<li>Find intial correspondences<ul>
+<li>ORB</li>
+</ul>
+</li>
+<li><p>Parallel computation of two models</p>
+<ul>
+<li>homography H<sub>cr</sub></li>
+<li><p>fundamental matrix F<sub>cr</sub></p>
+<p>each interation, compute score S<sub>m</sub></p>
+</li>
+</ul>
+</li>
+<li><p>Model selection<br><img src="http://www.codecogs.com/gif.latex?R_H=\frac{S_H}{S_H+S_F}" alt=""></p>
+<ul>
+<li>IF R<sub>H</sub> &gt; 0.45<ul>
+<li>choose homography</li>
+</ul>
+</li>
+<li>ELSE<ul>
+<li>fundamental matrix</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Motion and SfM</p>
+<ul>
+<li>check if there is one solution with most points seen with parallax, in front of both cameras and with low reprojection error</li>
+</ul>
+</li>
+<li><p>BA </p>
+<ul>
+<li>full BA to refine initial reconstruction</li>
+</ul>
+</li>
+</ul>
+<h2 id="Tracking"><a href="#Tracking" class="headerlink" title="Tracking"></a>Tracking</h2><ol>
+<li><p>ORB Extraction</p>
+<ul>
+<li>FAST corners at 8 scale levels</li>
+<li>compute ORB descriptors &amp; orientation</li>
+</ul>
+</li>
+<li><p>Initial Pose Estimation from Previous Frame</p>
+<ul>
+<li>IF tracking is SUCCESSFUL<ul>
+<li>constant velocity model</li>
+<li>wider search</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Initial Pose Estimation via Global Relocalization</p>
+<ul>
+<li>IF tracking LOST<ul>
+<li>convert frame into BoW</li>
+<li>query for keyframe candidates for global relocalization</li>
+</ul>
+</li>
+<li>alternatively RANSAC iterations for  each keyframe, PnP</li>
+<li>camera pose with enough liniers</li>
+<li>camera pose opt</li>
+</ul>
+</li>
+<li><p>Track Local Map</p>
+<p> once get initial estimation of camera pose &amp; feature matches, we can project map into frame and search more map point correspondence</p>
+<p> The local map also has  a reference keyframe K<sub>ref</sub>, which shares most map points with current frame</p>
+<ul>
+<li>compute mapPoints projection &amp; discard outliers</li>
+<li>compute the angle between current viewing ray v and mapPoint mean viewing direction n. Discard if v * n&lt;cos(60°)</li>
+<li>compute distance, discard if out of [dmin, dmax]</li>
+<li>compute scale</li>
+<li>compare D</li>
+</ul>
+</li>
+<li><p>New KeyFrame Decision</p>
+<p> To insert a frame:</p>
+<ul>
+<li>More than 20 frames passed global reloc</li>
+<li>Local mapping idle OR &gt;20 frames pass last keyframe insertion</li>
+<li>current frame tracks &gt;=50 points</li>
+<li>current frame tracks &lt;=90% of K<sub>ref</sub></li>
+</ul>
+</li>
+</ol>
+<h2 id="Local-Mapping"><a href="#Local-Mapping" class="headerlink" title="Local Mapping"></a>Local Mapping</h2><ol>
+<li><p>KeyFrame insertion</p>
+</li>
+<li><p>Recent MapPoints culling</p>
+<p> in order to be retained in the map, pass a restrictive test during te firsr 3 keyframes after creation</p>
+<ul>
+<li><blockquote>
+<p>25% the frames visible</p>
+</blockquote>
+</li>
+<li>observed from &gt;= last 3 key frames</li>
+</ul>
+</li>
+<li><p>New MapPoint Creation</p>
+<p> Created by triangulating ORB from connected keyframes K<sub>c</sub></p>
+</li>
+<li><p>Local BA</p>
+<ul>
+<li>current processed KeyFrame K<sub>i</sub></li>
+<li>all keyframes connected to it</li>
+<li>all MapPoints seen bt those<br><em>NOTE</em> all other KFs not connected but see,remain fixed in opt</li>
+</ul>
+</li>
+<li><p>Local KF culling</p>
+<p> <em>GOAL</em> detect redundant KFs &amp; delete</p>
+</li>
+</ol>
+<h2 id="Loop-Closing"><a href="#Loop-Closing" class="headerlink" title="Loop Closing"></a>Loop Closing</h2><ol>
+<li>Loop Candidates Detection<ul>
+<li>compute similarity</li>
+<li>discard below lowest score in DB</li>
+</ul>
+</li>
+<li>Compute Similarity Transformation<ul>
+<li>ORB</li>
+<li>RANSAC iterations, find ST using Horn<ul>
+<li>IF enough inliers found<ul>
+<li>opt &amp; guided search for more correspondences4</li>
+<li>opt again &amp; check</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Loop Fusion<ul>
+<li>fuse duplicated MapPoints</li>
+<li>insert new edges</li>
+</ul>
+</li>
+<li><p>Essential Graph Optimization</p>
+<p> effectively correct drifts</p>
+</li>
+</ol>
 
       
     </div>
@@ -454,9 +680,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/programming/" rel="tag"><i class="fa fa-tag"></i> programming</a>
-          
-            <a href="/tags/fun/" rel="tag"><i class="fa fa-tag"></i> fun</a>
+            <a href="/tags/SLAM/" rel="tag"><i class="fa fa-tag"></i> SLAM</a>
           
         </div>
       
@@ -469,8 +693,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/03/grinding/" rel="next" title="grinding">
-                <i class="fa fa-chevron-left"></i> grinding
+              <a href="/2018/03/18/orbslam2ConfigRun/" rel="next" title="orbslam2ConfigRun">
+                <i class="fa fa-chevron-left"></i> orbslam2ConfigRun
               </a>
             
           </div>
@@ -478,10 +702,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/04/WordCloud/" rel="prev" title="WordCloud">
-                WordCloud <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -661,7 +881,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用各种编程语言来说-I-love-you"><span class="nav-number">1.</span> <span class="nav-text">用各种编程语言来说 I love you</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JAVA"><span class="nav-number">1.1.</span> <span class="nav-text">1. JAVA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-C"><span class="nav-number">1.2.</span> <span class="nav-text">2. C</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-C"><span class="nav-number">1.3.</span> <span class="nav-text">3. C++</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-python"><span class="nav-number">1.4.</span> <span class="nav-text">4. python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-C"><span class="nav-number">1.5.</span> <span class="nav-text">5. C</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-JavaScript"><span class="nav-number">1.6.</span> <span class="nav-text">6. JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-R"><span class="nav-number">1.7.</span> <span class="nav-text">7. R</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-HTML"><span class="nav-number">1.8.</span> <span class="nav-text">8. HTML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-VB"><span class="nav-number">1.9.</span> <span class="nav-text">9. VB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-SHELL"><span class="nav-number">1.10.</span> <span class="nav-text">10. SHELL</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ORB-SLAM-a-Versatile-and-Accurate-Monocular-SLAM-System"><span class="nav-number">1.</span> <span class="nav-text">ORB-SLAM: a Versatile and Accurate Monocular SLAM System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Overview"><span class="nav-number">1.2.</span> <span class="nav-text">System Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-Choice"><span class="nav-number">1.2.1.</span> <span class="nav-text">Feature Choice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Threads-Tracking-Local-Mapping-amp-Loop-Closing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Three Threads: Tracking, Local Mapping &amp; Loop Closing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapPoints-KeyFrames-Selection"><span class="nav-number">1.2.3.</span> <span class="nav-text">MapPoints, KeyFrames, Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Covisibility-Graph-amp-Essential-Graph"><span class="nav-number">1.2.4.</span> <span class="nav-text">Covisibility Graph &amp; Essential Graph**</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BoW-Place-Recognition"><span class="nav-number">1.2.5.</span> <span class="nav-text">BoW Place Recognition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Automatic-Map-Initialization"><span class="nav-number">1.3.</span> <span class="nav-text">Automatic Map Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tracking"><span class="nav-number">1.4.</span> <span class="nav-text">Tracking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-Mapping"><span class="nav-number">1.5.</span> <span class="nav-text">Local Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loop-Closing"><span class="nav-number">1.6.</span> <span class="nav-text">Loop Closing</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -699,7 +919,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---7.3k words in total.---   </span>
+  <span class="post-count">---7.4k words in total.---   </span>
 </div>
 </br>
 

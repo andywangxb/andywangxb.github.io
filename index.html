@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/grinding/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/04/grinding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -291,7 +291,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/03/grinding/" itemprop="url">grinding</a></h1>
+                <a class="post-title-link" href="/2018/02/04/grinding/" itemprop="url">grinding</a></h1>
         
 
         <div class="post-meta">
@@ -437,7 +437,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/orbslam/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/orbslam/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -456,7 +456,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/18/orbslam/" itemprop="url">orbslam</a></h1>
+                <a class="post-title-link" href="/2018/03/19/orbslam/" itemprop="url">orbslam</a></h1>
         
 
         <div class="post-meta">
@@ -934,7 +934,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  103
+                  152
                 </span>
               
 
@@ -961,7 +961,7 @@
       
         
           
-            <h1 id="ORB-SLAM2-Configuration-amp-Running"><a href="#ORB-SLAM2-Configuration-amp-Running" class="headerlink" title="ORB-SLAM2 Configuration &amp; Running"></a>ORB-SLAM2 Configuration &amp; Running</h1><h2 id="ORB-SLAM2"><a href="#ORB-SLAM2" class="headerlink" title="ORB-SLAM2"></a>ORB-SLAM2</h2><h3 id="GITHUB-PROJECT-orbslam2"><a href="#GITHUB-PROJECT-orbslam2" class="headerlink" title="GITHUB PROJECT: orbslam2"></a>GITHUB PROJECT: <a href="https://github.com/raulmur/ORB_SLAM2:" target="_blank" rel="noopener">orbslam2</a></h3><p>The instructions are written in detail. Additionally, I want to address some points.</p>
+            <h1 id="Running-ORB-SLAM2"><a href="#Running-ORB-SLAM2" class="headerlink" title="Running ORB-SLAM2"></a>Running ORB-SLAM2</h1><h2 id="ORB-SLAM2"><a href="#ORB-SLAM2" class="headerlink" title="ORB-SLAM2"></a>ORB-SLAM2</h2><h3 id="GITHUB-PROJECT-orbslam2"><a href="#GITHUB-PROJECT-orbslam2" class="headerlink" title="GITHUB PROJECT: orbslam2"></a>GITHUB PROJECT: <a href="https://github.com/raulmur/ORB_SLAM2:" target="_blank" rel="noopener">orbslam2</a></h3><p>The instructions are written in detail. Additionally, I want to address some points.</p>
 <p>Related Publication: ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras <a href="http://webdiis.unizar.es/~raulmur/MurMontielTardosTRO15.pdf" target="_blank" rel="noopener">[pdf]</a></p>
 <h3 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites:"></a>PreRequisites:</h3><ul>
 <li>C++11 OR C++0x Compiler</li>
@@ -972,8 +972,17 @@
 <li>ROS (optional)</li>
 </ul>
 <h4 id="1-about-OpenCV"><a href="#1-about-OpenCV" class="headerlink" title="1. about OpenCV"></a>1. about <strong>OpenCV</strong></h4><p>suggest DON NOT try version &gt; 3.0, I have failed multiple times.<br>Eventuall, I successfully run on <a href="https://github.com/opencv/opencv/archive/2.4.11.zip" target="_blank" rel="noopener">OpenCV 2.4.11</a></p>
+<p>compile OpenCV, check <a href="http://blog.csdn.net/u013453604/article/details/49781771" target="_blank" rel="noopener">here</a> </p>
+<p>IF you want to <em>uninstall</em> OPENCV <a href="http://blog.csdn.net/yoouzx/article/details/52988094" target="_blank" rel="noopener">here</a></p>
 <h4 id="2-about-Building"><a href="#2-about-Building" class="headerlink" title="2. about Building"></a>2. about Building</h4><p><strong>./build.sh</strong></p>
-<p>Remove <code>-j</code> of <code>make -j</code> to make sure your code can run smoothly.<br>IF your PC is powerful enough, IGNORE this!!!</p>
+<p>Remove <code>-j</code> of  <code>make -j</code> to make sure your code can run smoothly.<br>IF your PC is powerful enough, IGNORE this!!!</p>
+<h4 id="3-Tips"><a href="#3-Tips" class="headerlink" title="3. Tips"></a>3. Tips</h4><p>Good Tutorial can be found <a href="http://blog.csdn.net/myarrow/article/details/53045405" target="_blank" rel="noopener">here</a></p>
+<p>OPENGL may be needed for <strong>Pangolin</strong> <a href="http://blog.csdn.net/l297969586/article/details/53534807" target="_blank" rel="noopener">here</a></p>
+<h3 id="Stereo-Datasets"><a href="#Stereo-Datasets" class="headerlink" title="Stereo Datasets"></a>Stereo Datasets</h3><ul>
+<li>The EuRoC MAV Dataset [here] (<a href="https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets" target="_blank" rel="noopener">https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets</a>)</li>
+<li>KITTI Dataset <a href="http://www.cvlibs.net/datasets/kitti/eval_odometry.php" target="_blank" rel="noopener">here</a></li>
+<li>Others on CSDN <a href="http://blog.csdn.net/chenzhipeng1234/article/details/45850461" target="_blank" rel="noopener">here</a></li>
+</ul>
 
           
         
@@ -1597,7 +1606,7 @@ ELSE
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/25/slam-learning/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/slam-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -1616,7 +1625,7 @@ ELSE
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/25/slam-learning/" itemprop="url">slam-learning</a></h1>
+                <a class="post-title-link" href="/2018/02/26/slam-learning/" itemprop="url">slam-learning</a></h1>
         
 
         <div class="post-meta">
@@ -2088,7 +2097,7 @@ ELSE
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/10/html-ex/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/html-ex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -2107,7 +2116,7 @@ ELSE
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/10/html-ex/" itemprop="url">html_experiment</a></h1>
+                <a class="post-title-link" href="/2018/02/11/html-ex/" itemprop="url">html_experiment</a></h1>
         
 
         <div class="post-meta">
@@ -2266,7 +2275,7 @@ ELSE
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/anaconda/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/07/anaconda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xingbo WANG">
@@ -2285,7 +2294,7 @@ ELSE
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/06/anaconda/" itemprop="url">anaconda</a></h1>
+                <a class="post-title-link" href="/2018/02/07/anaconda/" itemprop="url">anaconda</a></h1>
         
 
         <div class="post-meta">
@@ -2852,7 +2861,7 @@ ELSE
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---7.3k words in total.---   </span>
+  <span class="post-count">---7.4k words in total.---   </span>
 </div>
 </br>
 

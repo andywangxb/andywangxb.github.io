@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ORB-SLAM2 Configuration &amp;amp; RunningORB-SLAM2GITHUB PROJECT: orbslam2The instructions are written in detail. Additionally, I want to address some points. Related Publication: ORB-SLAM2: an Open-Sourc">
+<meta name="description" content="Running ORB-SLAM2ORB-SLAM2GITHUB PROJECT: orbslam2The instructions are written in detail. Additionally, I want to address some points. Related Publication: ORB-SLAM2: an Open-Source SLAM System for Mo">
 <meta name="keywords" content="SLAM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="orbslam2ConfigRun">
 <meta property="og:url" content="http://yoursite.com/2018/03/18/orbslam2ConfigRun/index.html">
 <meta property="og:site_name" content="THIS IS LIFE!">
-<meta property="og:description" content="ORB-SLAM2 Configuration &amp;amp; RunningORB-SLAM2GITHUB PROJECT: orbslam2The instructions are written in detail. Additionally, I want to address some points. Related Publication: ORB-SLAM2: an Open-Sourc">
+<meta property="og:description" content="Running ORB-SLAM2ORB-SLAM2GITHUB PROJECT: orbslam2The instructions are written in detail. Additionally, I want to address some points. Related Publication: ORB-SLAM2: an Open-Source SLAM System for Mo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-19T08:58:15.801Z">
+<meta property="og:updated_time" content="2018-03-20T11:39:29.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="orbslam2ConfigRun">
-<meta name="twitter:description" content="ORB-SLAM2 Configuration &amp;amp; RunningORB-SLAM2GITHUB PROJECT: orbslam2The instructions are written in detail. Additionally, I want to address some points. Related Publication: ORB-SLAM2: an Open-Sourc">
+<meta name="twitter:description" content="Running ORB-SLAM2ORB-SLAM2GITHUB PROJECT: orbslam2The instructions are written in detail. Additionally, I want to address some points. Related Publication: ORB-SLAM2: an Open-Source SLAM System for Mo">
 
 
 
@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T05:55:10-07:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T20:55:10+08:00">
                 2018-03-18
               </time>
             
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  103
+                  152
                 </span>
               
 
@@ -392,7 +392,7 @@
       
 
       
-        <h1 id="ORB-SLAM2-Configuration-amp-Running"><a href="#ORB-SLAM2-Configuration-amp-Running" class="headerlink" title="ORB-SLAM2 Configuration &amp; Running"></a>ORB-SLAM2 Configuration &amp; Running</h1><h2 id="ORB-SLAM2"><a href="#ORB-SLAM2" class="headerlink" title="ORB-SLAM2"></a>ORB-SLAM2</h2><h3 id="GITHUB-PROJECT-orbslam2"><a href="#GITHUB-PROJECT-orbslam2" class="headerlink" title="GITHUB PROJECT: orbslam2"></a>GITHUB PROJECT: <a href="https://github.com/raulmur/ORB_SLAM2:" target="_blank" rel="noopener">orbslam2</a></h3><p>The instructions are written in detail. Additionally, I want to address some points.</p>
+        <h1 id="Running-ORB-SLAM2"><a href="#Running-ORB-SLAM2" class="headerlink" title="Running ORB-SLAM2"></a>Running ORB-SLAM2</h1><h2 id="ORB-SLAM2"><a href="#ORB-SLAM2" class="headerlink" title="ORB-SLAM2"></a>ORB-SLAM2</h2><h3 id="GITHUB-PROJECT-orbslam2"><a href="#GITHUB-PROJECT-orbslam2" class="headerlink" title="GITHUB PROJECT: orbslam2"></a>GITHUB PROJECT: <a href="https://github.com/raulmur/ORB_SLAM2:" target="_blank" rel="noopener">orbslam2</a></h3><p>The instructions are written in detail. Additionally, I want to address some points.</p>
 <p>Related Publication: ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras <a href="http://webdiis.unizar.es/~raulmur/MurMontielTardosTRO15.pdf" target="_blank" rel="noopener">[pdf]</a></p>
 <h3 id="PreRequisites"><a href="#PreRequisites" class="headerlink" title="PreRequisites:"></a>PreRequisites:</h3><ul>
 <li>C++11 OR C++0x Compiler</li>
@@ -403,8 +403,17 @@
 <li>ROS (optional)</li>
 </ul>
 <h4 id="1-about-OpenCV"><a href="#1-about-OpenCV" class="headerlink" title="1. about OpenCV"></a>1. about <strong>OpenCV</strong></h4><p>suggest DON NOT try version &gt; 3.0, I have failed multiple times.<br>Eventuall, I successfully run on <a href="https://github.com/opencv/opencv/archive/2.4.11.zip" target="_blank" rel="noopener">OpenCV 2.4.11</a></p>
+<p>compile OpenCV, check <a href="http://blog.csdn.net/u013453604/article/details/49781771" target="_blank" rel="noopener">here</a> </p>
+<p>IF you want to <em>uninstall</em> OPENCV <a href="http://blog.csdn.net/yoouzx/article/details/52988094" target="_blank" rel="noopener">here</a></p>
 <h4 id="2-about-Building"><a href="#2-about-Building" class="headerlink" title="2. about Building"></a>2. about Building</h4><p><strong>./build.sh</strong></p>
-<p>Remove <code>-j</code> of <code>make -j</code> to make sure your code can run smoothly.<br>IF your PC is powerful enough, IGNORE this!!!</p>
+<p>Remove <code>-j</code> of  <code>make -j</code> to make sure your code can run smoothly.<br>IF your PC is powerful enough, IGNORE this!!!</p>
+<h4 id="3-Tips"><a href="#3-Tips" class="headerlink" title="3. Tips"></a>3. Tips</h4><p>Good Tutorial can be found <a href="http://blog.csdn.net/myarrow/article/details/53045405" target="_blank" rel="noopener">here</a></p>
+<p>OPENGL may be needed for <strong>Pangolin</strong> <a href="http://blog.csdn.net/l297969586/article/details/53534807" target="_blank" rel="noopener">here</a></p>
+<h3 id="Stereo-Datasets"><a href="#Stereo-Datasets" class="headerlink" title="Stereo Datasets"></a>Stereo Datasets</h3><ul>
+<li>The EuRoC MAV Dataset [here] (<a href="https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets" target="_blank" rel="noopener">https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets</a>)</li>
+<li>KITTI Dataset <a href="http://www.cvlibs.net/datasets/kitti/eval_odometry.php" target="_blank" rel="noopener">here</a></li>
+<li>Others on CSDN <a href="http://blog.csdn.net/chenzhipeng1234/article/details/45850461" target="_blank" rel="noopener">here</a></li>
+</ul>
 
       
     </div>
@@ -490,7 +499,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/18/orbslam/" rel="prev" title="orbslam">
+              <a href="/2018/03/19/orbslam/" rel="prev" title="orbslam">
                 orbslam <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -672,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ORB-SLAM2-Configuration-amp-Running"><span class="nav-number">1.</span> <span class="nav-text">ORB-SLAM2 Configuration &amp; Running</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM2"><span class="nav-number">1.1.</span> <span class="nav-text">ORB-SLAM2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GITHUB-PROJECT-orbslam2"><span class="nav-number">1.1.1.</span> <span class="nav-text">GITHUB PROJECT: orbslam2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PreRequisites"><span class="nav-number">1.1.2.</span> <span class="nav-text">PreRequisites:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-about-OpenCV"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1. about OpenCV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-about-Building"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2. about Building</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Running-ORB-SLAM2"><span class="nav-number">1.</span> <span class="nav-text">Running ORB-SLAM2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM2"><span class="nav-number">1.1.</span> <span class="nav-text">ORB-SLAM2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GITHUB-PROJECT-orbslam2"><span class="nav-number">1.1.1.</span> <span class="nav-text">GITHUB PROJECT: orbslam2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PreRequisites"><span class="nav-number">1.1.2.</span> <span class="nav-text">PreRequisites:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-about-OpenCV"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1. about OpenCV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-about-Building"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2. about Building</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Tips"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3. Tips</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stereo-Datasets"><span class="nav-number">1.1.3.</span> <span class="nav-text">Stereo Datasets</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -710,7 +719,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">---7.3k words in total.---   </span>
+  <span class="post-count">---7.4k words in total.---   </span>
 </div>
 </br>
 
